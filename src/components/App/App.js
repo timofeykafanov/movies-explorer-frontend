@@ -1,5 +1,5 @@
-import { Routes } from 'react-router-dom';
-// import Main from "../Main/Main";
+import { Route, Routes } from 'react-router-dom';
+import Main from "../Main/Main";
 // import Movies from "../Movies/Movies";
 // import SavedMovies from "../SavedMovies/SavedMovies";
 // import Profile from "../Profile/Profile";
@@ -14,10 +14,10 @@ function App() {
     <>
       <Header />
       <Routes>
-        {/* <Route path="/" element={<Main />} >
+        <Route path="/" element={<Main />} >
 
         </Route>
-        <Route path="/movies" element={<Movies />} >
+        {/* <Route path="/movies" element={<Movies />} >
 
         </Route>
         <Route path="/saved-movies" element={<SavedMovies />} >

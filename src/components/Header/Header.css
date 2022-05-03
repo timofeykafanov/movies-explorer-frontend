@@ -1,4 +1,5 @@
 .header {
+  box-sizing: border-box;
   background: #073042;
   height: 74px;
   padding: 0 70px;
