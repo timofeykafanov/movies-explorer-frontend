@@ -3,25 +3,11 @@
   padding: 100px 70px;
 }
 
-.techs__title {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.22;
-  margin: 0 0 23px;
-  letter-spacing: -0.04em;
-}
-
-.techs__line {
-  background-color: #DADADA;
-  border: none;
-  height: 1px;
-  margin: 0 0 90px;
-}
-
 .techs__block {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 90px 0 0;
 }
 
 .techs__subtitle {

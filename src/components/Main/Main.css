@@ -4,3 +4,18 @@
   margin: auto;
   color: white;
 }
+
+.section__title {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.22;
+  margin: 0 0 23px;
+  letter-spacing: -0.04em;
+}
+
+.section__line {
+  background-color: #DADADA;
+  border: none;
+  height: 1px;
+  margin: 0;
+}

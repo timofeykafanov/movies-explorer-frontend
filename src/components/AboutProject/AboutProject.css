@@ -3,21 +3,6 @@
   padding: 110px 70px;
 }
 
-.about__title {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.22;
-  margin: 0 0 23px;
-  letter-spacing: -0.04em;
-}
-
-.about__line {
-  background-color: #DADADA;
-  border: none;
-  height: 1px;
-  margin: 0 0 70px;
-}
-
 .about__texts {
   display: grid;
   grid-auto-flow: column;
@@ -25,7 +10,7 @@
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-row-gap: 26px;
   grid-column-gap: 40px;
-  margin: 0 0 110px 0;
+  margin: 70px 0 110px;
 }
 
 .about__subtitle {

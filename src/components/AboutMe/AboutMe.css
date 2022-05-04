@@ -1,0 +1,60 @@
+.aboutMe {
+  padding: 110px 70px 50px;
+  background-color: #202020;
+}
+
+.aboutMe__block {
+  display: flex;
+  margin-top: 66px;
+  justify-content: space-between;
+}
+
+.aboutMe__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.aboutMe__texts {
+  max-width: 600px;
+}
+
+.aboutMe__name {
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 1.16;
+  letter-spacing: -0.04em;
+  margin: 0 0 18px;
+}
+
+.aboutMe__about {
+  font-size: 18px;
+  line-height: 1.11;
+  margin: 0 0 26px;
+  font-weight: 500;
+}
+
+.aboutMe__text {
+  font-size: 14px;
+  line-height: 1.57;
+  margin: 0;
+}
+
+.aboutMe__image {
+  width: 270px;
+  height: 327px;
+  background: url('../../images/photo.jpeg');
+  border-radius: 10px;
+}
+
+.aboutMe__link {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+.aboutMe__link:first-of-type {
+  margin-right: 20px;
+}
