@@ -1,0 +1,46 @@
+.portfolio {
+  padding: 50px 70px 125px;
+  background-color: #202020;
+}
+
+.portfolio__title {
+  color: #8B8B8B;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.11;
+  margin: 0 0 30px;
+}
+
+.portfolio__list {
+  list-style-type: none;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.portfolio__item {
+  box-sizing: content-box;
+  font-size: 30px;
+  line-height: 1.67;
+  letter-spacing: -0.04em;
+  padding: 20px 0;
+  border-bottom: 1px solid #424242;
+  background-image: url('../../images/arrow.svg');
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.portfolio__item:last-of-type {
+  border: none;
+}
+
+.portfolio__link {
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.portfolio__link:hover {
+  opacity: 0.6;
+}

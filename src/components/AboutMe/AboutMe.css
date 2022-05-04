@@ -53,8 +53,13 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
+  transition: opacity 0.3s;
 }
 
 .aboutMe__link:first-of-type {
   margin-right: 20px;
+}
+
+.aboutMe__link:hover {
+  opacity: 0.6;
 }
