@@ -1,5 +1,5 @@
 .portfolio {
-  padding: 50px 70px 125px;
+  padding: 50px 70px 115px;
   background-color: #202020;
 }
 
@@ -33,6 +33,7 @@
 
 .portfolio__item:last-of-type {
   border: none;
+  padding-bottom: 0;
 }
 
 .portfolio__link {
