@@ -4,7 +4,6 @@ function Techs() {
   return (
     <section className='techs'>
       <h2 className='section__title'>Технологии</h2>
-      <hr className='section__line'></hr>
       <div className='techs__block'>
         <h3 className='techs__subtitle'>7 технологий</h3>
         <p className='techs__text'>

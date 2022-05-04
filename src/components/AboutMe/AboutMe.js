@@ -4,7 +4,6 @@ function AboutMe() {
   return (
     <section className='aboutMe'>
       <h2 className='section__title'>Студент</h2>
-      <hr className='section__line' />
       <div className='aboutMe__block'>
         <div className='aboutMe__info'>
           <div className='aboutMe__texts'>

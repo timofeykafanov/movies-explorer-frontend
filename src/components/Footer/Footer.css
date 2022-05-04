@@ -1,0 +1,56 @@
+.footer {
+  box-sizing: border-box;
+  margin: auto;
+  max-width: 1280px;
+  padding: 79px 70px 20px;
+  background: #202020;
+  color: white;
+}
+
+.footer__title {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.23;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 20px;
+  border-bottom: 1px solid #424242;
+}
+
+.footer__block {
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.footer__year {
+  margin: 0;
+}
+
+.footer__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.footer__item {
+  margin-left: 20px;
+}
+
+.footer__item:first-of-type {
+  margin: 0;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.footer__link:hover {
+  opacity: 0.6;
+}

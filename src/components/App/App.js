@@ -8,13 +8,19 @@ import Main from "../Main/Main";
 import Header from '../Header/Header';
 
 import './App.css';
+import Footer from '../Footer/Footer';
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Main />} >
+        <Route path="/" element={
+          <>
+            <Main />
+            <Footer />
+          </>
+        } >
 
         </Route>
         {/* <Route path="/movies" element={<Movies />} >
