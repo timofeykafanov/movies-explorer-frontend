@@ -8,6 +8,7 @@
   font-size: 22px;
   line-height: 1.22;
   margin: 0 0 23px;
+  letter-spacing: -0.04em;
 }
 
 .about__line {
@@ -32,6 +33,7 @@
   font-size: 20px;
   line-height: 1.2;
   margin: 0;
+  letter-spacing: -0.04em;
 }
 
 .about__text{
