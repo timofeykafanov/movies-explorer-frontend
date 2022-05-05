@@ -17,14 +17,12 @@ function AboutMe() {
             </p>
           </div>
           <div className='aboutMe__links'>
-            <a 
-              className='aboutMe__link'
+            <a className='aboutMe__link'
               href='https://www.facebook.com/profile.php?id=100011387485927'
               target='_blank'
               rel="noreferrer">Facebook
             </a>
-            <a 
-              className='aboutMe__link'
+            <a className='aboutMe__link'
               href='https://github.com/timofeykafanov'
               target='_blank'
               rel="noreferrer">Github
