@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Main from "../Main/Main";
-// import Movies from "../Movies/Movies";
+import Movies from "../Movies/Movies";
 // import SavedMovies from "../SavedMovies/SavedMovies";
 // import Profile from "../Profile/Profile";
 // import Login from "../Login/Login";
@@ -16,17 +16,12 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={
-          <>
-            <Main />
-            <Footer />
-          </>
-        } >
-
-        </Route>
-        {/* <Route path="/movies" element={<Movies />} >
-
-        </Route>
-        <Route path="/saved-movies" element={<SavedMovies />} >
+          <Main />
+        } />
+        <Route path="/movies" element={
+          <Movies />
+        } />
+        {/* <Route path="/saved-movies" element={<SavedMovies />} >
 
         </Route>
         <Route path="/profile" element={<Profile />} >
@@ -39,6 +34,7 @@ function App() {
 
         </Route> */}
       </Routes>
+      <Footer />
     </>
   );
 }

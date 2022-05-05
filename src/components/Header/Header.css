@@ -7,8 +7,16 @@
   margin: auto;
   display: flex;
   align-items: center;
-  color: white;
   justify-content: space-between;
+}
+
+.header_main {
+  background: #073042;
+}
+
+.header_movie {
+  background: #202020;
+  position: relative;
 }
 
 .header__logo {
@@ -55,5 +63,46 @@
 }
 
 .header__signin:hover {
+  opacity: 0.6;
+}
+
+.header__links {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  margin: auto;
+  left: calc(100% / 2 - 105px);
+}
+
+.header__link {
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+  line-height: 1.38;
+  transition: opacity 0.3s;
+}
+
+.header__link:first-of-type {
+  margin-right: 16px;
+}
+
+.header__link_active {
+  font-weight: 500;
+}
+
+.header__account {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  transition: opacity 0.3s;
+}
+
+.header__link:hover {
+  opacity: 0.6;
+}
+
+.header__account:hover {
   opacity: 0.6;
 }
