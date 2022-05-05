@@ -97,6 +97,10 @@
   font-size: 14px;
   line-height: 1.14;
   transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  justify-content: space-between;
 }
 
 .header__link:hover {
@@ -105,4 +109,14 @@
 
 .header__account:hover {
   opacity: 0.6;
+}
+
+.header__icon {
+  background-color: #313131;
+  background-image: url('../../images/account.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 26px;
+  height: 30px;
+  border-radius: 4px;
 }

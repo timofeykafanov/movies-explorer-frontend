@@ -20,7 +20,10 @@ function Header() {
             <Link className='header__link header__link_active' to='/movies'>Фильмы</Link>
             <Link className='header__link' to='/saved-movies'>Сохранённые фильмы</Link>
           </div>
-          <Link className='header__account' to='/profile'>Аккаунт</Link>
+          <Link className='header__account' to='/profile'>
+            <span>Аккаунт</span>
+            <div className='header__icon' />
+          </Link>
         </header>
       } />
     </Routes>
