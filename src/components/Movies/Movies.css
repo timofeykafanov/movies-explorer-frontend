@@ -1,7 +1,23 @@
 .movies {
   max-width: 1280px;
   margin: auto;
+  padding: 80px 70px;
   color: white;
   box-sizing: border-box;
   background: #202020;
+  display: flex;
+  flex-direction: column;
+}
+
+.movies__button {
+  width: 320px;
+  height: 36px;
+  margin: 60px auto 0;
+  border: 1px solid #424242;
+  background: #202020;
+  color: white;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  border-radius: 6px;
 }
