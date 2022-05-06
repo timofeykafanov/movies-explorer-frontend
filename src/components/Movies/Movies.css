@@ -1,0 +1,6 @@
+.movies {
+  max-width: 1280px;
+  margin: auto;
+  color: white;
+  box-sizing: border-box;
+}
