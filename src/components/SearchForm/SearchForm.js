@@ -8,7 +8,7 @@ function SearchForm() {
           <input className='search__input' placeholder='Фильм'></input>
           <button className='search__button' type='submit'>Найти</button>
         </div>
-        <label className='search__label' for='short-films'>
+        <label className='search__label'>
           Короткометражки
           <input className='search__invisible' type='checkbox' name='short-films' id='short-films' value='short-films'></input>
           <span className='search__visible'></span>
