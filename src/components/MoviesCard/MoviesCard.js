@@ -1,4 +1,11 @@
 import './MoviesCard.css';
+import firstMovie from'../../images/first-movie.jpg';
+import secondMovie from'../../images/second-movie.jpg';
+import thirdMovie from'../../images/third-movie.jpg';
+import fourthMovie from'../../images/fourth-movie.jpg';
+import fifthMovie from'../../images/fifth-movie.jpg';
+import sixthMovie from'../../images/sixth-movie.jpg';
+import seventhMovie from'../../images/seventh-movie.jpg';
 
 function MoviesCard() {
   return (
@@ -9,7 +16,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like movies-card__like_active' />
         </div>
-        <div className='movies-card__image' />
+        <img src={firstMovie} alt='33 слова о дизайне' className='movies-card__image' />
       </div>
       <div className='movies-card'>
         <div className='movies-card__about'>
@@ -17,7 +24,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like movies-card__like_active' />
         </div>
-        <div className='movies-card__image' />
+        <img src={secondMovie} alt='Киноальманах «100 лет дизайна»' className='movies-card__image' />
       </div>
       <div className='movies-card'>
         <div className='movies-card__about'>
@@ -25,7 +32,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like' />
         </div>
-        <div className='movies-card__image' />
+        <img src={thirdMovie} alt='В погоне за Бенкси' className='movies-card__image' />
       </div>
       <div className='movies-card'>
         <div className='movies-card__about'>
@@ -33,7 +40,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like' />
         </div>
-        <div className='movies-card__image' />
+        <img src={fourthMovie} alt='Баския: Взрыв реальности' className='movies-card__image' />
       </div>
       <div className='movies-card'>
         <div className='movies-card__about'>
@@ -41,7 +48,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like movies-card__like_active' />
         </div>
-        <div className='movies-card__image' />
+        <img src={fifthMovie} alt='Бег это свобода' className='movies-card__image' />
       </div>
       <div className='movies-card'>
         <div className='movies-card__about'>
@@ -49,7 +56,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like' />
         </div>
-        <div className='movies-card__image' />
+        <img src={sixthMovie} alt='Книготорговцы' className='movies-card__image' />
       </div>
       <div className='movies-card'>
         <div className='movies-card__about'>
@@ -57,7 +64,7 @@ function MoviesCard() {
           <p className='movies-card__duration'>1ч 42м</p>
           <div className='movies-card__like' />
         </div>
-        <div className='movies-card__image' />
+        <img src={seventhMovie} alt='Когда я думаю о Германии ночью' className='movies-card__image' />
       </div>
     </>
   )

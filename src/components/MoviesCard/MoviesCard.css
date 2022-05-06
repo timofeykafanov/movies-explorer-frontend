@@ -34,7 +34,6 @@
 }
 
 .movies-card__image {
-  background-image: url('../../images/first-movie.jpg');
   width: 220px;
   height: 122px;
 }
