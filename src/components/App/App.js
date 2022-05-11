@@ -37,7 +37,7 @@ function App() {
 
         </Route> */}
       </Routes>
-      {location.pathname === '/profile' ? <></> : <Footer />}
+      {location.pathname === '/profile' || location.pathname === '/signin' || location.pathname === '/signup' ? <></> : <Footer />}
     </>
   );
 }

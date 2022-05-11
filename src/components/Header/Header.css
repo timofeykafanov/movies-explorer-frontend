@@ -8,15 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #202020;
+  position: relative;
 }
 
 .header_main {
   background: #073042;
-}
-
-.header_movie {
-  background: #202020;
-  position: relative;
 }
 
 .header__logo {

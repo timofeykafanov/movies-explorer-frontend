@@ -15,7 +15,7 @@ function Header() {
       } />
       {['/movies', '/saved-movies', '/profile'].map(path =>
         <Route path={path} key={path} element={
-          <header className='header header_movie'>
+          <header className='header'>
             <div className='header__logo'></div>
             <div className='header__links'>
               <Link className='header__link header__link_active' to='/movies'>Фильмы</Link>
@@ -28,32 +28,6 @@ function Header() {
           </header>
         } />
       )}
-      {/* <Route path={'/movies' || '/saved-movies' || '/profile'} element={
-        <header className='header header_movie'>
-          <div className='header__logo'></div>
-          <div className='header__links'>
-            <Link className='header__link header__link_active' to='/movies'>Фильмы</Link>
-            <Link className='header__link' to='/saved-movies'>Сохранённые фильмы</Link>
-          </div>
-          <Link className='header__account' to='/profile'>
-            <span>Аккаунт</span>
-            <div className='header__icon' />
-          </Link>
-        </header>
-      } /> */}
-      {/* <Route path='/saved-movies' element={
-        <header className='header header_movie'>
-          <div className='header__logo'></div>
-          <div className='header__links'>
-            <Link className='header__link header__link_active' to='/movies'>Фильмы</Link>
-            <Link className='header__link' to='/saved-movies'>Сохранённые фильмы</Link>
-          </div>
-          <Link className='header__account' to='/profile'>
-            <span>Аккаунт</span>
-            <div className='header__icon' />
-          </Link>
-        </header>
-      } /> */}
     </Routes>
   )
 }
