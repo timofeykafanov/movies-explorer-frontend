@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
@@ -10,8 +10,10 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Footer from '../Footer/Footer';
 
 import './App.css';
+import Profile from '../Profile/Profile';
 
 function App() {
+  const location = useLocation();
   return (
     <>
       <Header />
@@ -25,17 +27,17 @@ function App() {
         <Route path="/saved-movies" element={
           <SavedMovies />
         } />
-        {/* <Route path="/profile" element={<Profile />} >
-
-        </Route>
-        <Route path="/signin" element={<Login />} >
+        <Route path="/profile" element={
+          <Profile />
+        } />
+        {/* <Route path="/signin" element={<Login />} >
 
         </Route>
         <Route path="/signup" element={<Register />} >
 
         </Route> */}
       </Routes>
-      <Footer />
+      {location.pathname === '/profile' ? <></> : <Footer />}
     </>
   );
 }

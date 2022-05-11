@@ -1,4 +1,5 @@
 @import url(./vendor/fonts.css);
+@import url(./vendor/normalize.css);
 
 body {
   font-family: 'Inter', 'Arial', sans-serif;
