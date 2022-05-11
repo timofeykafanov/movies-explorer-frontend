@@ -1,6 +1,14 @@
 .header {
-  box-sizing: border-box;
+  background: #202020;;
+  width: 100%;
+}
+
+.header_main {
   background: #073042;
+}
+
+.header__container {
+  box-sizing: border-box;
   height: 74px;
   padding: 0 70px;
   max-width: 1280px;
@@ -12,7 +20,7 @@
   position: relative;
 }
 
-.header_main {
+.header__container_main {
   background: #073042;
 }
 

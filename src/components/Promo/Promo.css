@@ -1,8 +1,15 @@
 .promo {
+  width: 100%;
+  background: #073042;
+}
+
+.promo__container {
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
-  background: #073042;
   padding: 75px 70px;
+  max-width: 1280px;
+  margin: auto;
 }
 
 .promo__texts {

@@ -1,10 +1,12 @@
 .footer {
+  background: #202020;
+}
+
+.footer__container {
   box-sizing: border-box;
   margin: auto;
   max-width: 1280px;
   padding: 79px 70px 20px;
-  background: #202020;
-  color: white;
 }
 
 .footer__title {

@@ -1,6 +1,12 @@
 .about {
   background-color: #202020;
+}
+
+.about__container {
   padding: 110px 70px 100px;
+  margin: auto;
+  max-width: 1280px;
+  box-sizing: border-box;
 }
 
 .about__texts {

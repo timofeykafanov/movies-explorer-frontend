@@ -1,6 +1,12 @@
 .portfolio {
-  padding: 50px 70px 115px;
   background-color: #202020;
+}
+
+.portfolio__container {
+  margin: auto;
+  max-width: 1280px;
+  padding: 50px 70px 115px;
+  box-sizing: border-box;
 }
 
 .portfolio__title {

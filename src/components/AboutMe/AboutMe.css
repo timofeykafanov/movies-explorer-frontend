@@ -1,25 +1,31 @@
-.aboutMe {
-  padding: 120px 70px 50px;
+.about-me {
   background-color: #202020;
 }
 
-.aboutMe__block {
+.about-me__container {
+  margin: auto;
+  max-width: 1280px;
+  padding: 120px 70px 50px;
+  box-sizing: border-box;
+}
+
+.about-me__block {
   display: flex;
   margin-top: 66px;
   justify-content: space-between;
 }
 
-.aboutMe__info {
+.about-me__info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.aboutMe__texts {
+.about-me__texts {
   max-width: 600px;
 }
 
-.aboutMe__name {
+.about-me__name {
   font-weight: 400;
   font-size: 50px;
   line-height: 1.16;
@@ -27,27 +33,27 @@
   margin: 0 0 18px;
 }
 
-.aboutMe__about {
+.about-me__about {
   font-size: 18px;
   line-height: 1.11;
   margin: 0 0 26px;
   font-weight: 500;
 }
 
-.aboutMe__text {
+.about-me__text {
   font-size: 14px;
   line-height: 1.57;
   margin: 0;
 }
 
-.aboutMe__image {
+.about-me__image {
   width: 270px;
   height: 327px;
   background: url('../../images/photo.jpeg');
   border-radius: 10px;
 }
 
-.aboutMe__link {
+.about-me__link {
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -56,10 +62,10 @@
   transition: opacity 0.3s;
 }
 
-.aboutMe__link:first-of-type {
+.about-me__link:first-of-type {
   margin-right: 20px;
 }
 
-.aboutMe__link:hover {
+.about-me__link:hover {
   opacity: 0.6;
 }

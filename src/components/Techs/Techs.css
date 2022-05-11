@@ -1,6 +1,12 @@
 .techs {
   background-color: #272727;
+}
+
+.techs__container {
+  margin: auto;
+  box-sizing: border-box;
   padding: 100px 70px;
+  max-width: 1280px;
 }
 
 .techs__block {
