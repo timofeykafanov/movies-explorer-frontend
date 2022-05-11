@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import Error from '../Error/Error';
 
 import './App.css';
 
@@ -35,8 +36,11 @@ function App() {
         <Route path="/signup" element={
           <Register />
         } />
+        <Route path='/error' element={
+          <Error />
+        } />
       </Routes>
-      {location.pathname === '/profile' || location.pathname === '/signin' || location.pathname === '/signup' ? <></> : <Footer />}
+      {location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies' ? <Footer /> : <></>}
     </div>
   );
 }

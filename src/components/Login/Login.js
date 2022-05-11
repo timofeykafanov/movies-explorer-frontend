@@ -17,7 +17,7 @@ function Login() {
           <button className='login__button' type='submit'>Зарегистрироваться</button>
           <p className='login__text'>
             Ещё не зарегистрированы?
-            <Link className='login__link' to='/login'>Регистрация</Link>
+            <Link className='login__link' to='/signup'>Регистрация</Link>
           </p>
         </form>
       </div>
