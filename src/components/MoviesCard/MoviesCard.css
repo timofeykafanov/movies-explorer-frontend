@@ -27,6 +27,12 @@
   background-image: url('../../images/like.svg');
   width: 14px;
   height: 12px;
+  transition: opacity 0.3s;
+}
+
+.movies-card__like:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .movies-card__like_active {
@@ -36,4 +42,16 @@
 .movies-card__image {
   width: 220px;
   height: 122px;
+}
+
+.movies-card__delete {
+  background-image: url('../../images/delete.svg');
+  width: 14px;
+  height: 12px;
+  transition: opacity 0.3s;
+}
+
+.movies-card__delete:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }

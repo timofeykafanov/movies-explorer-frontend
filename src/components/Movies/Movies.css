@@ -20,4 +20,10 @@
   font-size: 12px;
   line-height: 1.25;
   border-radius: 6px;
+  transition: opacity 0.3s;
+}
+
+.movies__button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
