@@ -54,3 +54,58 @@
   line-height: 1.21;
   letter-spacing: -0.04em;
 }
+
+@media screen and (max-width: 1279px) {
+  .techs__container {
+    padding: 90px 50px;
+    max-width: 768px;
+  }
+
+  .techs__block {
+    margin-top: 80px;
+  }
+
+  .techs__subtitle {
+    margin-bottom: 22px;
+  }
+
+  .techs__text {
+    margin-bottom: 83px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .techs__item {
+    width: 84px;
+    height: 57px;
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .techs__container {
+    padding: 70px 18px;
+    max-width: 320px;
+  }
+
+  .techs__block {
+    margin-top: 60px;
+  }
+
+  .techs__subtitle {
+    margin-bottom: 24px;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .techs__text {
+    font-size: 11px;
+    line-height: 1.45;
+    margin-bottom: 50px;
+  }
+
+  .techs__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
