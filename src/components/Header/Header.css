@@ -125,3 +125,30 @@
   height: 30px;
   border-radius: 4px;
 }
+
+@media screen and (max-width: 1279px) {
+  .header__container {
+    max-width: 768px;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__container {
+    max-width: 320px;
+    padding: 0 14px;
+  }
+
+  .header__signin {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .header__signup {
+    font-size: 10px;
+    line-height: 1.6;
+    margin-right: 14px;
+  }
+}

@@ -40,7 +40,11 @@ function App() {
           <Error />
         } />
       </Routes>
-      {location.pathname === '/' || location.pathname === '/movies' || location.pathname === '/saved-movies' ? <Footer /> : <></>}
+      {location.pathname === '/' ||
+        location.pathname === '/movies' ||
+        location.pathname === '/saved-movies' ?
+        <Footer /> :
+      <></>}
     </div>
   );
 }

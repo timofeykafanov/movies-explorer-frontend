@@ -14,7 +14,7 @@ function Login() {
           <label className='login__label'>Пароль</label>
           <input className='login__input login__input_type_name' type='password' />
           <span className='login__error login__error_hidden'>Что-то пошло не так...</span>
-          <button className='login__button' type='submit'>Зарегистрироваться</button>
+          <button className='login__button' type='submit'>Войти</button>
           <p className='login__text'>
             Ещё не зарегистрированы?
             <Link className='login__link' to='/signup'>Регистрация</Link>
