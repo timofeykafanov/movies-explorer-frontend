@@ -1,5 +1,7 @@
 .footer {
   background: #202020;
+  font-size: 13px;
+  line-height: 1.23;
 }
 
 .footer__container {
@@ -11,13 +13,13 @@
 
 .footer__title {
   font-weight: 400;
-  font-size: 13px;
-  line-height: 1.23;
   text-align: center;
   margin: 0;
   padding: 0 0 20px;
   border-bottom: 1px solid #424242;
   color: #8B8B8B;
+  font-size: 13px;
+  line-height: 1.23;
 }
 
 .footer__block {
@@ -25,8 +27,6 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  font-size: 13px;
-  line-height: 16px;
 }
 
 .footer__year {
@@ -56,4 +56,45 @@
 
 .footer__link:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 1279px) {
+  .footer__container {
+    padding: 79px 30px 20px;
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footer__container {
+    max-width: 320px;
+    padding: 79px 10px 10px;
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .footer__title {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .footer__block {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .footer__list {
+    flex-direction: column;
+  }
+
+  .footer__item {
+    margin: 12px 0 0;
+  }
+
+  .footer__year {
+    color: #8B8B8B;
+    margin-top: 30px;
+  }
 }
