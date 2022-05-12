@@ -12,6 +12,7 @@ function Portfolio() {
               target='_blank'
               rel="noreferrer">Статичный сайт
             </a>
+            <div className='portfolio__arrow' />
           </li>
           <li className='portfolio__item'>
             <a className='portfolio__link'
@@ -19,6 +20,7 @@ function Portfolio() {
               target='_blank'
               rel="noreferrer">Адаптивный сайт
             </a>
+            <div className='portfolio__arrow' />
           </li>
           <li className='portfolio__item'>
             <a className='portfolio__link'
@@ -26,6 +28,7 @@ function Portfolio() {
               target='_blank'
               rel="noreferrer">Одностраничное приложение
             </a>
+            <div className='portfolio__arrow' />
           </li>
         </ul>
       </div>
