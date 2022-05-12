@@ -47,6 +47,7 @@
   line-height: 1.33;
   border-radius: 3px;
   transition: opacity 0.3s;
+  box-sizing: border-box;
 }
 
 .promo__link:hover {
@@ -57,4 +58,61 @@
   background-image: url('../../images/promo.svg');
   width: 310px;
   height: 304px;
+}
+
+@media screen and (max-width: 1279px) {
+  .promo__container {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 140px 0 76px;
+  }
+
+  .promo__image {
+    margin-bottom: 48px;
+  }
+
+  .promo__texts {
+    align-items: center;
+    text-align: center;
+  }
+
+  .promo__title {
+    max-width: 680px;
+    font-size: 40px;
+    line-height: 1.25;
+    margin-bottom: 22px;
+  }
+
+  .promo__subtitle {
+    max-width: 260px;
+  }
+
+  .promo__link {
+    margin-top: 92px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .promo__container {
+    padding: 70px 0 30px;
+  }
+
+  .promo__image {
+    width: 210px;
+    height: 206px;
+    background-size: contain;
+    margin-bottom: 44px;
+  }
+
+  .promo__title {
+    font-size: 30px;
+    line-height: 1.27;
+    max-width: 300px;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+
+  .promo__link {
+    margin-top: 80px;
+  }
 }
