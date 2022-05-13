@@ -59,6 +59,7 @@
   background: #202020;
   cursor: pointer;
   transition: opacity 0.3s;
+  padding: 0;
 }
 
 .profile__edit:hover {
@@ -76,4 +77,18 @@
 
 .profile__logout:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__container {
+    padding: 236px 0 269px;
+  }
+
+  .profile__title {
+    margin-bottom: 96px;
+  }
+
+  .profile__info {
+    margin-bottom: 210px;
+  }
 }
