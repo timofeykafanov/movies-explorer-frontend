@@ -147,8 +147,8 @@
   
   .header__menu {
     visibility: visible;
-    width: 23px;
-    height: 28px;
+    width: 44px;
+    height: 44px;
     background: url('../../images/menu.svg');
     padding: 0;
     border: none;
@@ -180,5 +180,9 @@
     font-size: 10px;
     line-height: 1.6;
     margin-right: 14px;
+  }
+
+  .header__menu {
+    right: 14px;
   }
 }

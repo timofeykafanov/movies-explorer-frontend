@@ -55,3 +55,42 @@
   opacity: 0.6;
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px) {
+  .movies-card {
+    padding: 0;
+    flex-direction: column-reverse;
+  }
+
+  .movies-card__about {
+    position: relative;
+    margin: 14px 12px;
+  }
+
+  .movies-card__image {
+    width: 300px;
+    height: 168px;
+  }
+
+  .movies-card__like {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+  }
+
+  .movies-card__delete {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+  }
+
+  .movies-card__title {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 1.22;
+  }
+
+  .movies-card__duration {
+    margin: 0;
+  }
+}

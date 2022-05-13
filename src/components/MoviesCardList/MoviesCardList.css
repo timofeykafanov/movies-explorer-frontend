@@ -3,3 +3,10 @@
   display: grid;
   gap: 40px;
 }
+
+@media screen and (max-width: 767px) {
+  .movies-card-list {
+    padding-top: 40px;
+    gap: 20px;
+  }
+}
