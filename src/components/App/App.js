@@ -11,6 +11,7 @@ import Register from '../Register/Register';
 import Error from '../Error/Error';
 
 import './App.css';
+import Menu from '../Menu/Menu';
 
 function App() {
   const location = useLocation();
@@ -40,6 +41,7 @@ function App() {
           <Error />
         } />
       </Routes>
+      <Menu />
       {location.pathname === '/' ||
         location.pathname === '/movies' ||
         location.pathname === '/saved-movies' ?

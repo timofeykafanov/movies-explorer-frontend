@@ -1,0 +1,96 @@
+.menu {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.menu__hidden {
+  visibility: hidden;
+}
+
+.menu__container {
+  background-color: #202020;
+  width: 520px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu__close {
+  border: none;
+  padding: 0;
+  background-size: cover;
+  width: 31px;
+  height: 31px;
+  background-color: #202020;
+  background-image: url('../../images/close.svg');
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.menu__close:hover {
+  opacity: 0.6;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: white;
+  transition: opacity 0.3s;
+  font-size: 18px;
+  line-height: 1.22;
+  padding: 4px 0;
+  margin-top: 20px;
+}
+
+.menu__link_active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid white;
+}
+
+.menu__link:first-of-type {
+  margin-top: 155px;
+}
+
+.menu__link:hover {
+  opacity: 0.6;
+}
+
+.menu__account {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  width: 100px;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 1.14;
+  position: absolute;
+  bottom: 92px;
+}
+
+.menu__account:hover {
+  opacity: 0.6;
+}
+
+.menu__icon {
+  background-color: #313131;
+  background-image: url('../../images/account.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 26px;
+  height: 30px;
+  border-radius: 4px;
+}

@@ -28,6 +28,7 @@ function Header() {
                 <span>Аккаунт</span>
                 <div className='header__icon' />
               </Link>
+              <button className='header__menu' type='button' />
             </div>
           </header>
         } />

@@ -126,10 +126,40 @@
   border-radius: 4px;
 }
 
+.header__menu {
+  visibility: hidden;
+  position: absolute;
+}
+
 @media screen and (max-width: 1279px) {
   .header__container {
     max-width: 768px;
     padding: 0 30px;
+  }
+
+  .header__links {
+    visibility: hidden;
+  }
+
+  .header__account {
+    visibility: hidden;
+  }
+  
+  .header__menu {
+    visibility: visible;
+    width: 23px;
+    height: 28px;
+    background: url('../../images/menu.svg');
+    padding: 0;
+    border: none;
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    right: 38px;
+  }
+
+  .header__menu:hover {
+    opacity: 0.6;
   }
 }
 

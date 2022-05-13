@@ -31,6 +31,7 @@
   border: none;
   border-radius: 3px;
   width: 74px;
+  cursor: pointer;
 }
 
 .search__label {
