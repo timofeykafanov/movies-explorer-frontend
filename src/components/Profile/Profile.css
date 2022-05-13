@@ -92,3 +92,25 @@
     margin-bottom: 210px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .profile__container {
+    padding: 70px 0 40px;
+  }
+
+  .profile__title {
+    margin-bottom: 80px;
+  }
+
+  .profile__info {
+    margin-bottom: 379px;
+  }
+  
+  .profile__name {
+    width: 260px;
+  }
+
+  .profile__email {
+    width: 260px;
+  }
+}
