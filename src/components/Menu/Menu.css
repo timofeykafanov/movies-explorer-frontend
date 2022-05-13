@@ -94,3 +94,24 @@
   height: 30px;
   border-radius: 4px;
 }
+
+@media screen and (max-width: 767px) {
+  .menu__container {
+    width: 100%;
+    position: relative;
+  }
+
+  .menu__link {
+    padding: 7px 0;
+    margin-top: 10px;
+  }
+
+  .menu__link_active {
+    padding-bottom: 5px;
+  }
+
+  .menu__close {
+    top: 14px;
+    right: 14px;
+  }
+}
