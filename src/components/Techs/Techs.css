@@ -84,6 +84,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .techs {
+    background: #202020;
+  }
+
   .techs__container {
     padding: 70px 18px;
     max-width: 320px;
