@@ -28,6 +28,9 @@
   width: 14px;
   height: 12px;
   transition: opacity 0.3s;
+  border: none;
+  padding: 0;
+  background-color: #2F2F2F;
 }
 
 .movies-card__like:hover {
