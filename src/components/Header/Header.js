@@ -7,7 +7,7 @@ function Header() {
       <Route path='/' element={
         <header className='header_main'>
           <div className='header__container header__container_main'>
-            <div className='header__logo' />
+            <Link to='/' className='header__logo' />
             <div className='header__auth'>
               <Link className='header__signup' to='/signup'>Регистрация</Link>
               <Link className='header__signin' to='/signin'>Войти</Link>
@@ -19,7 +19,7 @@ function Header() {
         <Route path={path} key={path} element={
           <header className='header'>
             <div className='header__container'>
-              <div className='header__logo' />
+              <Link to='/' className='header__logo' />
               <div className='header__links'>
                 <Link className='header__link header__link_active' to='/movies'>Фильмы</Link>
                 <Link className='header__link' to='/saved-movies'>Сохранённые фильмы</Link>

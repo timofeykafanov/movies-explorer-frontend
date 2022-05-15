@@ -5,7 +5,7 @@ function Login() {
   return (
     <section className='login'>
       <div className='login__container'>
-        <div className='login__logo' />
+        <Link to='/' className='login__logo' />
         <h2 className='login__title'>Рады видеть!</h2>
         <form className='login__form'>
           <label className='login__label'>E-mail</label>
