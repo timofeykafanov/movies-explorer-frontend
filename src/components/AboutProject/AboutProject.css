@@ -1,0 +1,128 @@
+.about {
+  background-color: #202020;
+}
+
+.about__container {
+  padding: 110px 70px 100px;
+  margin: auto;
+  max-width: 1280px;
+  box-sizing: border-box;
+}
+
+.about__texts {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  grid-row-gap: 26px;
+  grid-column-gap: 40px;
+  margin: 70px 0 110px;
+}
+
+.about__subtitle {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.04em;
+}
+
+.about__text{
+  font-size: 14px;
+  line-height: 1.42;
+  margin: 0;
+}
+
+.about__time {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(2, 36px);
+  row-gap: 5px;
+  font-size: 14px;
+  line-height: 1.21;
+}
+
+.about__one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #3DDC84;
+  color: black;
+  margin: 0;
+}
+
+.about__four {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #303030;
+  text-align: center;
+  margin: 0;
+}
+
+.about__backend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B8B8B;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+.about__frontend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B8B8B;
+  text-align: center;
+  margin: 0;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1279px) {
+  .about__container {
+    padding: 90px 50px 80px;
+    max-width: 768px;
+  }
+
+  .about__texts {
+    margin-bottom: 93px;
+    grid-row-gap: 22px;
+    grid-column-gap: 30px;
+  }
+
+  .about__text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about__container {
+    padding: 70px 18px 60px;
+    max-width: 320px;
+  }
+
+  .about__texts {
+    margin: 20px 0 60px;
+    grid-template-columns: 284px;
+    grid-template-rows: repeat(4, minmax(min-content, max-content));
+    grid-row-gap: 16px;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+
+  .about__subtitle {
+    margin-top: 60px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+  .about__time {
+    grid-template-columns: 100px 184px;
+    gap: 0;
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}

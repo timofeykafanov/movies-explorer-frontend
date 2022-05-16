@@ -1,0 +1,117 @@
+.search {
+  padding: 0 0 10px;
+}
+
+.search__form {
+  border-bottom: 1px solid #424242;
+}
+
+.search__search {
+  display: flex;
+}
+
+.search__input {
+  color: #8B8B8B;
+  background: #2F2F2F;
+  border: none;
+  border-radius: 4px;
+  width: 1060px;
+  padding: 15px 22px;
+  margin-right: 10px;
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+.search__button {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: white;
+  background: #4285F4;
+  border: none;
+  border-radius: 3px;
+  width: 74px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.search__button:hover {
+  opacity: 0.6;
+}
+
+.search__label {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin: 31px auto 40px;
+  max-width: 156px;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.search__label:hover {
+  opacity: 0.7;
+
+}
+
+.search__invisible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.search__invisible:focus-visible + .search__visible {
+  outline: auto;
+}
+
+.search__invisible:checked + .search__visible {
+  background-image: url('../../images/smalltumb.svg');
+}
+
+.search__visible {
+  width: 36px;
+  height: 20px;
+  border-radius: 20px;
+  background-image: url('../../images/smalltumboff.svg');
+  transition: background 0.3s;
+}
+
+.search__visible:hover {
+  cursor: pointer;
+}
+
+.search__text {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-left: 12px;
+}
+
+@media screen and (max-width: 1279px) {
+  .search__input {
+    width: 628px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .search__form {
+    margin: 0 4px;
+  }
+
+  .search__button {
+    width: 70px;
+  }
+
+  .search__input {
+    padding: 13px 16px;
+    width: 212px;
+  }
+
+  .search__label {
+    margin: 45px auto;
+  }
+}
