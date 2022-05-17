@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './App.css';
 
@@ -15,6 +15,8 @@ import Error from '../Error/Error';
 import Menu from '../Menu/Menu';
 import auth from '../../utils/Auth';
 import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import mainApi from '../../utils/MainApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -33,45 +35,59 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  useEffect(() => {
+    Promise.all([mainApi.getUserInfo()])
+      .then((user) => {
+        console.log(user)
+        setLoggedIn(true);
+        setCurrentUser(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [])
+
   return (
-    <div className='page'>
-      <Header />
-      <Routes>
-        <Route path="/" element={
-          <Main />
-        } />
-        <Route path="/movies" element={
-          <ProtectedRoute loggedIn={loggedIn}>
-            <Movies />
-          </ProtectedRoute>
-        } />
-        <Route path="/saved-movies" element={
-          <ProtectedRoute loggedIn={loggedIn}>
-            <SavedMovies />
-          </ProtectedRoute>
-        } />
-        <Route path="/profile" element={
-          <ProtectedRoute loggedIn={loggedIn}>
-            <Profile />
-          </ProtectedRoute>
-        } />
-        <Route path="/signin" element={
-          <Login handleLogin={handleLogin} />
-        } />
-        <Route path="/signup" element={
-          <Register />
-        } />
-        <Route path='/error' element={
-          <Error />
-        } />
-      </Routes>
-      <Menu />
-      {location.pathname === '/' ||
-        location.pathname === '/movies' ||
-        location.pathname === '/saved-movies' ?
-        <Footer /> :
-      <></>}
-    </div>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className='page'>
+        <Header loggedIn={loggedIn} />
+        <Routes>
+          <Route path="/" element={
+            <Main />
+          } />
+          <Route path="/movies" element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <Movies />
+            </ProtectedRoute>
+          } />
+          <Route path="/saved-movies" element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <SavedMovies />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute loggedIn={loggedIn}>
+              <Profile />
+            </ProtectedRoute>
+          } />
+          <Route path="/signin" element={
+            <Login handleLogin={handleLogin} />
+          } />
+          <Route path="/signup" element={
+            <Register />
+          } />
+          <Route path='/error' element={
+            <Error />
+          } />
+        </Routes>
+        <Menu />
+        {location.pathname === '/' ||
+          location.pathname === '/movies' ||
+          location.pathname === '/saved-movies' ?
+          <Footer /> :
+        <></>}
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

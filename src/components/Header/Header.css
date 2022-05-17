@@ -3,7 +3,7 @@
   width: 100%;
 }
 
-.header_main {
+.header_protected {
   background: #073042;
 }
 
@@ -20,7 +20,7 @@
   position: relative;
 }
 
-.header__container_main {
+.header__container_protected {
   background: #073042;
 }
 

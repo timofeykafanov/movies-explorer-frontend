@@ -8,7 +8,7 @@ function ProtectedRoute({children, loggedIn}) {
     }
 
     return (
-        <Navigate to="/sign-in" />
+        <Navigate to="/" />
     )
 }
 

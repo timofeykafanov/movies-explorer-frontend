@@ -6,7 +6,7 @@ const HEADERS = {
 };
 
 class Auth {
-  constructor(address, headers) {
+  constructor({ address, headers }) {
     this._address = address;
     this._headers = headers;
   }
@@ -55,6 +55,9 @@ class Auth {
   }
 }
 
-const auth = new Auth(MAIN_URL, HEADERS);
+const auth = new Auth({
+  address: MAIN_URL, 
+  headers: HEADERS
+});
 
 export default auth;
