@@ -6,7 +6,7 @@ const HEADERS = {
 };
 
 class Auth {
-  constructor({address, headers}) {
+  constructor(address, headers) {
     this._address = address;
     this._headers = headers;
   }
@@ -44,7 +44,7 @@ class Auth {
   }
 
   logout() {
-    return fetch(`${this._address}/signup`, {
+    return fetch(`${this._address}/signout`, {
       method: 'POST',
       headers: this._headers,
       credentials: 'include',
@@ -55,6 +55,6 @@ class Auth {
   }
 }
 
-const auth = new Auth({MAIN_URL, HEADERS});
+const auth = new Auth(MAIN_URL, HEADERS);
 
 export default auth;

@@ -1,4 +1,7 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+import './App.css';
 
 import Header from '../Header/Header';
 import Main from "../Main/Main";
@@ -10,11 +13,25 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Error from '../Error/Error';
 import Menu from '../Menu/Menu';
-
-import './App.css';
+import auth from '../../utils/Auth';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
+
   const location = useLocation();
+
+  function handleLogin(email, password) {
+    auth.login(email, password)
+      .then((user) => {
+        setLoggedIn(true)
+        setCurrentUser(user);
+        navigate('/movies');
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div className='page'>
       <Header />
@@ -32,7 +49,7 @@ function App() {
           <Profile />
         } />
         <Route path="/signin" element={
-          <Login />
+          <Login handleLogin={handleLogin} />
         } />
         <Route path="/signup" element={
           <Register />
