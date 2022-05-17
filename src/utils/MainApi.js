@@ -1,4 +1,4 @@
-const MAIN_URL = 'https://api.movie.diploma.nomoredomains.work';
+const MAIN_URL = 'http://localhost:3001';
 
 class MainApi {
   constructor(address) {
@@ -13,7 +13,7 @@ class MainApi {
     }
   }
 
-  
+
 }
 
 const mainApi = new MainApi({

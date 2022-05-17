@@ -13,7 +13,7 @@ class MoviesApi {
     }
   }
 
-  getInitialCards() {
+  getMovies() {
     return fetch(`${this._address}`)
       .then((res) => {
         return this._getResponseData(res);
