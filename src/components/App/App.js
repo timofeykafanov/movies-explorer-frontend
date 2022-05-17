@@ -14,6 +14,7 @@ import Register from '../Register/Register';
 import Error from '../Error/Error';
 import Menu from '../Menu/Menu';
 import auth from '../../utils/Auth';
+import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,13 +41,19 @@ function App() {
           <Main />
         } />
         <Route path="/movies" element={
-          <Movies />
+          <ProtectedRoute loggedIn={loggedIn}>
+            <Movies />
+          </ProtectedRoute>
         } />
         <Route path="/saved-movies" element={
-          <SavedMovies />
+          <ProtectedRoute loggedIn={loggedIn}>
+            <SavedMovies />
+          </ProtectedRoute>
         } />
         <Route path="/profile" element={
-          <Profile />
+          <ProtectedRoute loggedIn={loggedIn}>
+            <Profile />
+          </ProtectedRoute>
         } />
         <Route path="/signin" element={
           <Login handleLogin={handleLogin} />
