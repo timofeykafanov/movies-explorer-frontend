@@ -15,8 +15,10 @@ function Header({ loggedIn }) {
           <div className={`header__container ${location.pathname === '/' ? 'header__container_protected' : ''}`}>
             <Link to='/' className='header__logo' />
             <div className='header__links'>
-              <Link className='header__link header__link_active' to='/movies'>Фильмы</Link>
-              <Link className='header__link' to='/saved-movies'>Сохранённые фильмы</Link>
+              <Link className={`header__link ${location.pathname === '/movies' ?
+                'header__link_active' : ''}`} to='/movies'>Фильмы</Link>
+              <Link className={`header__link ${location.pathname === '/saved-movies' ?
+                'header__link_active' : ''}`} to='/saved-movies'>Сохранённые фильмы</Link>
             </div>
             <Link className='header__account' to='/profile'>
               <span>Аккаунт</span>

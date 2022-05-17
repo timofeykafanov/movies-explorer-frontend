@@ -35,6 +35,14 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  function handleLogout() {
+    auth.logout()
+      .then(() => {
+        setCurrentUser({});
+        setLoggedIn(false);
+      })
+  }
+
   useEffect(() => {
     Promise.all([mainApi.getUserInfo()])
       .then((user) => {
@@ -67,7 +75,7 @@ function App() {
           } />
           <Route path="/profile" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile />
+              <Profile handleLogout={handleLogout} />
             </ProtectedRoute>
           } />
           <Route path="/signin" element={

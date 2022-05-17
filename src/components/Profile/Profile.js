@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Profile.css';
 
-function Profile() {
+function Profile(props) {
   return (
     <main className='profile'>
       <div className='profile__container'>
@@ -17,7 +17,7 @@ function Profile() {
           </div>
         </section>
         <button className='profile__edit' type='button'>Редактировать</button>
-        <Link className='profile__logout' to='/'>Выйти из аккаунта</Link>
+        <Link className='profile__logout' to='/' onClick={props.handleLogout}>Выйти из аккаунта</Link>
       </div>
     </main>
   )
