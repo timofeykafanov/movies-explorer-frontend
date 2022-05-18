@@ -22,11 +22,29 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
-
   const location = useLocation();
+  const [isEditState, setIaEditState] = useState(false);
+
+  function handleEditClick() {
+    setIaEditState(true);
+  }
+
+  function handleSaveClick() {
+    
+  }
 
   function handleLogin(email, password) {
     auth.login(email, password)
+      .then((user) => {
+        setLoggedIn(true)
+        setCurrentUser(user);
+        navigate('/movies');
+      })
+      .catch(err => console.log(err))
+  }
+
+  function handleRegister(email, password, name) {
+    auth.register(email, password, name)
       .then((user) => {
         setLoggedIn(true)
         setCurrentUser(user);
@@ -41,18 +59,30 @@ function App() {
         setCurrentUser({});
         setLoggedIn(false);
       })
+      .catch(err => console.log(err))
   }
+
+  function handleUpdateUserInfo(email, name) {
+    console.log(email, name)
+    mainApi.updateUserInfo(email, name)
+      .then((user) => {
+        setCurrentUser(user);
+        setIaEditState(false);
+      })
+      .catch(err => console.log(err))
+  }
+
+  useEffect(() => {
+    setIaEditState(false);
+  }, [navigate])
 
   useEffect(() => {
     Promise.all([mainApi.getUserInfo()])
       .then((user) => {
-        console.log(user)
         setLoggedIn(true);
         setCurrentUser(user);
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(err => console.log(err))
   }, [])
 
   return (
@@ -75,14 +105,19 @@ function App() {
           } />
           <Route path="/profile" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Profile handleLogout={handleLogout} />
+              <Profile handleLogout={handleLogout}
+                handleUpdateUserInfo={handleUpdateUserInfo}
+                handleEditClick={handleEditClick}
+                handleSaveClick={handleSaveClick}
+                isEditState={isEditState}
+                />
             </ProtectedRoute>
           } />
           <Route path="/signin" element={
             <Login handleLogin={handleLogin} />
           } />
           <Route path="/signup" element={
-            <Register />
+            <Register handleRegister={handleRegister} />
           } />
           <Route path='/error' element={
             <Error />

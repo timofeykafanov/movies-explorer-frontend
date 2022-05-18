@@ -1,8 +1,14 @@
 const MAIN_URL = 'http://localhost:3001';
 
+const HEADERS = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+};
+
 class MainApi {
-  constructor(address) {
+  constructor({ address, headers }) {
     this._address = address;
+    this._headers = headers;
   }
 
   _getResponseData(res) {
@@ -14,8 +20,20 @@ class MainApi {
   }
 
   getUserInfo() {
-    return fetch(`http://localhost:3001/users/me`, {
+    return fetch(`${this._address}/users/me`, {
       credentials: 'include',
+    })
+      .then(res => {
+        return this._getResponseData(res);
+      })
+  }
+
+  updateUserInfo(email, name) {
+    return fetch(`${this._address}/users/me`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({ email, name }),
     })
       .then(res => {
         return this._getResponseData(res);
@@ -25,6 +43,7 @@ class MainApi {
 
 const mainApi = new MainApi({
   address: MAIN_URL,
+  headers: HEADERS,
 })
 
 export default mainApi;

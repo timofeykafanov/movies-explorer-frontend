@@ -1,5 +1,10 @@
 const MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
+const HEADERS = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+};
+
 class MoviesApi {
   constructor({address}) {
     this._address = address;
@@ -14,7 +19,10 @@ class MoviesApi {
   }
 
   getMovies() {
-    return fetch(`${this._address}`)
+    return fetch(`${this._address}`, {
+      headers: HEADERS,
+      
+    })
       .then((res) => {
         return this._getResponseData(res);
       })
