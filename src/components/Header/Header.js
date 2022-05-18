@@ -22,7 +22,7 @@ function Header(props) {
             </div>
             <Link className='header__account' to='/profile'>
               <span>Аккаунт</span>
-              <bitton className='header__icon' />
+              <div className='header__icon' />
             </Link>
             <button className='header__menu' type='button' onClick={props.openMenu} />
           </div>
