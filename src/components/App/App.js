@@ -24,6 +24,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isEditState, setIaEditState] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function handleEditClick() {
     setIaEditState(true);
@@ -31,6 +32,14 @@ function App() {
 
   function handleSaveClick() {
     
+  }
+
+  function openMenu() {
+    setIsMenuOpen(true);
+  }
+
+  function closeMenu() {
+    setIsMenuOpen(false);
   }
 
   function handleLogin(email, password) {
@@ -88,7 +97,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
-        <Header loggedIn={loggedIn} />
+        <Header loggedIn={loggedIn} openMenu={openMenu} />
         <Routes>
           <Route path="/" element={
             <Main />
@@ -123,7 +132,7 @@ function App() {
             <Error />
           } />
         </Routes>
-        <Menu />
+        <Menu isOpen={isMenuOpen} closeMenu={closeMenu} />
         {location.pathname === '/' ||
           location.pathname === '/movies' ||
           location.pathname === '/saved-movies' ?

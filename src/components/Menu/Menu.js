@@ -1,19 +1,25 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './Menu.css';
 
-function Menu() {
+function Menu(props) {
+  const location = useLocation();
+
+  function handleClick() {
+    props.closeMenu();
+  }
+
   return (
-    <div className='menu menu__hidden'>
-      <div className='menu__container'>
-        <button className='menu__close' type='button' />
-        <Link className='menu__link' to='/'>Главная</Link>
-        <Link className='menu__link menu__link_active' to='/movies'>Фильмы</Link>
-        <Link className='menu__link' to='/saved-movies'>Сохранённые фильмы</Link>
-        <Link className='menu__account' to='/profile'>
+    <div className={`menu ${props.isOpen ? '' : 'menu_hidden'}`}>
+      <nav className='menu__container'>
+        <button className='menu__close' type='button' onClick={handleClick} />
+        <Link className={`menu__link ${location.pathname === '/' ? 'menu__link_active' : ''}`} to='/' onClick={handleClick}>Главная</Link>
+        <Link className={`menu__link ${location.pathname === '/movies' ? 'menu__link_active' : ''}`} to='/movies' onClick={handleClick}>Фильмы</Link>
+        <Link className={`menu__link ${location.pathname === '/saved-movies' ? 'menu__link_active' : ''}`} to='/saved-movies' onClick={handleClick}>Сохранённые фильмы</Link>
+        <Link className='menu__account' to='/profile' onClick={handleClick}>
           Аккаунт
           <div className='menu__icon' />
         </Link>
-      </div>
+      </nav>
     </div>
   )
 }

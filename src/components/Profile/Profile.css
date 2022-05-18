@@ -124,7 +124,7 @@
 }
 
 .profile__input:-webkit-autofill {
-  -webkit-box-shadow:0 0 0 50px #202020 inset;
+  -webkit-box-shadow: 0 0 0 50px #202020 inset;
   -webkit-text-fill-color: white;
 }
 
