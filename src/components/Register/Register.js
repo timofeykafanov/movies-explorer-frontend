@@ -17,7 +17,7 @@ function Register({ handleRegister }) {
     const input = e.target;
     setName(input.value);
     setIsValidName(input.validity.valid);
-    if (!isValidEmail) {
+    if (!isValidName) {
       setNameError(input.validationMessage)
     } else {
       setNameError('');

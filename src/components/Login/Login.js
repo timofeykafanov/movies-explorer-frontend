@@ -51,7 +51,8 @@ function Login({ handleLogin }) {
           <input className={`login__input ${!isValidPassword ? 'login__input_error' : ''}`} type='password' name='password'
             value={password} placeholder="Пароль" onChange={handlePasswordChange} required />
           <span className='login__error'>{passwordError}</span>
-          <button className={`login__button ${!(isValidEmail && isValidPassword) ? 'login__button_disabled' : ''}`} type='submit' disabled={!(isValidEmail && isValidPassword)}>Войти</button>
+          <button className={`login__button ${!(isValidEmail && isValidPassword) ? 'login__button_disabled' : ''}`}
+            type='submit' disabled={!(isValidEmail && isValidPassword)}>Войти</button>
           <p className='login__text'>
             Ещё не зарегистрированы?
             <Link className='login__link' to='/signup'>Регистрация</Link>

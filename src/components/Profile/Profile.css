@@ -16,6 +16,7 @@
   font-size: 24px;
   line-height: 1.21;
   margin: 0 0 123px;
+  text-align: center;
 }
 
 .profile__name {
@@ -24,6 +25,7 @@
   width: 410px;
   border-bottom: 1px solid #424242;
   padding-bottom: 16px;
+  position: relative;
 }
 
 .profile__email {
@@ -31,6 +33,7 @@
   justify-content: space-between;
   width: 410px;
   padding-top: 17px;
+  position: relative;
 }
 
 .profile__key {
@@ -123,6 +126,21 @@
   text-align: right;
 }
 
+.profile__error {
+  color: #EE3465;
+  font-size: 10px;
+  line-height: 1.2;
+  position: absolute;
+  max-width: 410px;
+  top: 15px;
+  right: 0;
+  text-align: right;
+}
+
+.profile__error_type_email {
+  top: 32px;
+}
+
 .profile__input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 50px #202020 inset;
   -webkit-text-fill-color: white;
@@ -154,6 +172,7 @@
 
   .profile__title {
     margin-bottom: 80px;
+    max-width: 310px;
   }
 
   .profile__info {

@@ -9,20 +9,36 @@ function Profile(props) {
   const [email, setEmail] = useState(currentUser.email);
   const [name, setName] = useState(currentUser.name);
   const [isSameValue, setIsSameValue] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidName, setIsValidName] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [nameError, setNameError] = useState('');
 
   function handleChange(e) {
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else if (e.target.name === "name") {
-      setName(e.target.value);
+    const input = e.target;
+    if (input.name === "email") {
+      setEmail(input.value);
+      setIsValidEmail(input.validity.valid);
+      if (!isValidEmail) {
+        setEmailError(input.validationMessage)
+      } else {
+        setEmailError('');
+      }
+    } else if (input.name === "name") {
+      setName(input.value);
+      setIsValidName(input.validity.valid);
+      if (!isValidName) {
+        setNameError(input.validationMessage)
+      } else {
+        setNameError('');
+      }
     }
-    if ((e.target.value === currentUser.name || name === currentUser.name) &&
-      (e.target.value === currentUser.email || name === currentUser.email)) {
+    if ((input.value === currentUser.name || name === currentUser.name) &&
+      (input.value === currentUser.email || name === currentUser.email)) {
       setIsSameValue(true);
     } else {
       setIsSameValue(false);
     }
-    console.log(isSameValue, name, e.target.value)
   }
 
   function handleSubmit(e) {
@@ -39,14 +55,16 @@ function Profile(props) {
           <div className='profile__name'>
             <p className='profile__key'>Имя</p>
             {props.isEditState ? <input className='profile__input' type='text' name='name'
-              defaultValue={currentUser.name} onChange={handleChange} /> :
+              defaultValue={currentUser.name} onChange={handleChange} required minLength='2' maxLength='30' /> :
               <p className='profile__value'>{currentUser.name}</p>}
+              <span className='profile__error profile__error_type_name'>{nameError}</span>
           </div>
           <div className='profile__email'>
             <p className='profile__key'>E-mail</p>
             {props.isEditState ? <input className='profile__input' type='email' name='email'
-              defaultValue={currentUser.email} onChange={handleChange} /> :
+              defaultValue={currentUser.email} onChange={handleChange} required /> :
               <p className='profile__value'>{currentUser.email}</p>}
+              <span className='profile__error profile__error_type_email'>{emailError}</span>
           </div>
           {props.isEditState ?
             <button className={`profile__button ${isSameValue ? 'profile__button_disabled' : ''}`} type='submit' 
