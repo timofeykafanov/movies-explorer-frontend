@@ -8,25 +8,28 @@ function Login({ handleLogin }) {
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isValidPassword, setIsValidPassword] = useState(false);
   const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   function handleEmailChange(e) {
-      setEmail(e.target.value);
-      setIsValidEmail(e.target.validity.valid);
-      if (!isValidEmail) {
-        setEmailError(e.target.validationMessage)
-      } else {
-        setEmailError('');
-      }
+    const input = e.target;
+    setEmail(input.value);
+    setIsValidEmail(input.validity.valid);
+    if (!isValidEmail) {
+      setEmailError(input.validationMessage)
+    } else {
+      setEmailError('');
+    }
   }
 
   function handlePasswordChange(e) {
-    setPassword(e.target.value);
-    setIsValidPassword(e.target.validity.valid);
-      if (!isValidPassword) {
-        setEmailError(e.target.validationMessage)
-      } else {
-        setEmailError('');
-      }
+    const input = e.target;
+    setPassword(input.value);
+    setIsValidPassword(input.validity.valid);
+    if (!isValidPassword) {
+      setPasswordError(input.validationMessage)
+    } else {
+      setPasswordError('');
+    }
   }
 
   function handleSubmit(e) {
@@ -47,7 +50,7 @@ function Login({ handleLogin }) {
           <label className='login__label'>Пароль</label>
           <input className={`login__input ${!isValidPassword ? 'login__input_error' : ''}`} type='password' name='password'
             value={password} placeholder="Пароль" onChange={handlePasswordChange} required />
-          <span className='login__error login__error_hidden'>Что-то пошло не так...</span>
+          <span className='login__error'>{passwordError}</span>
           <button className={`login__button ${!(isValidEmail && isValidPassword) ? 'login__button_disabled' : ''}`} type='submit' disabled={!(isValidEmail && isValidPassword)}>Войти</button>
           <p className='login__text'>
             Ещё не зарегистрированы?

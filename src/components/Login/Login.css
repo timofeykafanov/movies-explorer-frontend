@@ -48,19 +48,15 @@
   color: white;
 }
 
+.login__input_error {
+  color: #EE3465;
+}
+
 .login__error {
   color: #EE3465;
   font-size: 10px;
   line-height: 1.2;
   min-height: 24px;
-}
-
-.login__input_error {
-  color: #EE3465;
-}
-
-.login__error_hidden {
-  visibility: hidden;
 }
 
 .login__button {
