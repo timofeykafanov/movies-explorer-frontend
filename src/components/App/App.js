@@ -14,7 +14,7 @@ import Register from '../Register/Register';
 import Error from '../Error/Error';
 import Menu from '../Menu/Menu';
 import auth from '../../utils/Auth';
-import ProtectedRoute from '../../ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 
