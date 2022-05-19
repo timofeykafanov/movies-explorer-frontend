@@ -7,9 +7,6 @@ A multi-page adaptive website where the user can register and log in, search for
 * CSS
 * JavaScript
 * React.js
-* Node.js
-* Express
-* MongoDB
 
 ## Available Scripts
 
