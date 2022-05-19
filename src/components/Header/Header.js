@@ -12,7 +12,7 @@ function Header(props) {
         location.pathname === '/') &&
         props.loggedIn === true ? 
         <header className={`header ${location.pathname === '/' ? 'header_protected' : ''}`}>
-          <div className={`header__container ${location.pathname === '/' ? 'header__container_protected' : ''}`}>
+          <nav className={`header__container ${location.pathname === '/' ? 'header__container_protected' : ''}`}>
             <Link to='/' className='header__logo' />
             <div className='header__links'>
               <Link className={`header__link ${location.pathname === '/movies' ?
@@ -25,7 +25,7 @@ function Header(props) {
               <div className='header__icon' />
             </Link>
             <button className='header__menu' type='button' onClick={props.openMenu} />
-          </div>
+          </nav>
         </header> : <></>
       }
       {location.pathname === '/' && props.loggedIn === false ?

@@ -126,6 +126,10 @@
   text-align: right;
 }
 
+.profile__input_error {
+  color: #EE3465;
+}
+
 .profile__error {
   color: #EE3465;
   font-size: 10px;

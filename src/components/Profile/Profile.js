@@ -9,8 +9,8 @@ function Profile(props) {
   const [email, setEmail] = useState(currentUser.email);
   const [name, setName] = useState(currentUser.name);
   const [isSameValue, setIsSameValue] = useState(true);
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [isValidName, setIsValidName] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidName, setIsValidName] = useState(true);
   const [emailError, setEmailError] = useState('');
   const [nameError, setNameError] = useState('');
 
@@ -54,21 +54,21 @@ function Profile(props) {
         <form className='profile__info' onSubmit={handleSubmit}>
           <div className='profile__name'>
             <p className='profile__key'>Имя</p>
-            {props.isEditState ? <input className='profile__input' type='text' name='name'
+            {props.isEditState ? <input className={`profile__input ${!isValidName ? 'profile__input_error' : ''}`} type='text' name='name'
               defaultValue={currentUser.name} onChange={handleChange} required minLength='2' maxLength='30' /> :
               <p className='profile__value'>{currentUser.name}</p>}
               <span className='profile__error profile__error_type_name'>{nameError}</span>
           </div>
           <div className='profile__email'>
             <p className='profile__key'>E-mail</p>
-            {props.isEditState ? <input className='profile__input' type='email' name='email'
+            {props.isEditState ? <input className={`profile__input ${!isValidEmail ? 'profile__input_error' : ''}`} type='email' name='email'
               defaultValue={currentUser.email} onChange={handleChange} required /> :
               <p className='profile__value'>{currentUser.email}</p>}
               <span className='profile__error profile__error_type_email'>{emailError}</span>
           </div>
           {props.isEditState ?
-            <button className={`profile__button ${isSameValue ? 'profile__button_disabled' : ''}`} type='submit' 
-              onClick={props.handleSaveClick} disabled={isSameValue}>Сохранить</button> :
+            <button className={`profile__button ${(isSameValue || !(isValidName && !isValidEmail)) ? 'profile__button_disabled' : ''}`} type='submit' 
+              onClick={props.handleSaveClick} disabled={isSameValue || !(isValidName && !isValidEmail)}>Сохранить</button> :
             <div className='profile__links'>
               <button className='profile__edit' type='button' onClick={props.handleEditClick}>Редактировать</button>
               <Link className='profile__logout' to='/' onClick={props.handleLogout}>Выйти из аккаунта</Link>
