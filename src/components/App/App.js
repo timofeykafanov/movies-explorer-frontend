@@ -17,6 +17,7 @@ import auth from '../../utils/Auth';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -25,13 +26,25 @@ function App() {
   const location = useLocation();
   const [isEditState, setIaEditState] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
+
+  function handleSearch() {
+    moviesApi.getMovies()
+      .then((movies) => {
+        setMovies(movies);
+      })
+  }
+
+  function handleSavedMoviesSearch() {
+    mainApi.getMovies()
+      .then((movies) => {
+        setSavedMovies(movies);
+      })
+  }
 
   function handleEditClick() {
     setIaEditState(true);
-  }
-
-  function handleSaveClick() {
-    
   }
 
   function openMenu() {
@@ -87,7 +100,7 @@ function App() {
 
   useEffect(() => {
     Promise.all([mainApi.getUserInfo()])
-      .then((user) => {
+      .then(([user]) => {
         setLoggedIn(true);
         setCurrentUser(user);
       })
@@ -104,12 +117,12 @@ function App() {
           } />
           <Route path="/movies" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Movies />
+              <Movies handleSearch={handleSearch} movies={movies} mainApi={mainApi} />
             </ProtectedRoute>
           } />
           <Route path="/saved-movies" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <SavedMovies />
+              <SavedMovies handleSearch={handleSavedMoviesSearch} movies={savedMovies} mainApi={mainApi} />
             </ProtectedRoute>
           } />
           <Route path="/profile" element={
@@ -117,7 +130,6 @@ function App() {
               <Profile handleLogout={handleLogout}
                 handleUpdateUserInfo={handleUpdateUserInfo}
                 handleEditClick={handleEditClick}
-                handleSaveClick={handleSaveClick}
                 isEditState={isEditState}
                 />
             </ProtectedRoute>

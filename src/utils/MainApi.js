@@ -39,6 +39,62 @@ class MainApi {
         return this._getResponseData(res);
       })
   }
+
+  getMovies() {
+    return fetch(`${this._address}/movies`, {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then(res => {
+        return this._getResponseData(res);
+      })
+  }
+
+  addMovie({
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId
+  }) {
+    return fetch(`${this._address}/movies`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: this._headers,
+      body: JSON.stringify({ 
+        country,
+        director,
+        duration,
+        year,
+        description,
+        image,
+        trailerLink,
+        nameRU,
+        nameEN,
+        thumbnail,
+        movieId
+      }),
+    })
+      .then(res => {
+        return this._getResponseData(res);
+      })
+  }
+
+  deleteMovie(_id) {
+    return fetch(`${this._address}/movies/${_id}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    })
+      .then(res => {
+        return this._getResponseData(res);
+      })
+  }
 }
 
 const mainApi = new MainApi({

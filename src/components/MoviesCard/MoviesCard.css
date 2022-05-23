@@ -3,10 +3,15 @@
   background: #2F2F2F;
   padding: 6px;
   justify-content: space-between;
+  height: 134px;
+  box-sizing: border-box;
 }
 
 .movies-card__about {
   margin: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movies-card__title {
@@ -20,7 +25,7 @@
   font-size: 11px;
   line-height: 1.18;
   color: #8B8B8B;
-  margin: 0 0 30px;
+  margin: 0;
 }
 
 .movies-card__like {
@@ -66,6 +71,7 @@
   .movies-card {
     padding: 0;
     flex-direction: column-reverse;
+    height: 232px;
   }
 
   .movies-card__about {
@@ -94,9 +100,5 @@
     margin-bottom: 8px;
     font-size: 12px;
     line-height: 1.22;
-  }
-
-  .movies-card__duration {
-    margin: 0;
   }
 }
