@@ -29,17 +29,21 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
 
-  function handleSearch() {
+  function handleSearch(movie) {
+    const key = new RegExp(movie, 'gi');
     moviesApi.getMovies()
       .then((movies) => {
-        setMovies(movies);
+        const fiteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        setMovies(fiteredMovies);
       })
   }
 
-  function handleSavedMoviesSearch() {
+  function handleSavedMoviesSearch(movie) {
+    const key = new RegExp(movie, 'gi');
     mainApi.getMovies()
       .then((movies) => {
-        setSavedMovies(movies);
+        const fiteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        setSavedMovies(fiteredMovies);
       })
   }
 

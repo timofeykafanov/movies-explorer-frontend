@@ -30,7 +30,6 @@ function MoviesCard(props) {
         }
 
         function handleDeleteClick() {
-          console.log(movie._id)
           props.mainApi.deleteMovie(movie._id);
         }
 

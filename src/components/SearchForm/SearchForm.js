@@ -16,7 +16,7 @@ function SearchForm(props) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
-      props.handleSearch();
+      props.handleSearch(movie);
     }
   }
 
