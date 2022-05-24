@@ -16,7 +16,16 @@ function SearchForm(props) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
-      props.handleSearch(movie);
+      props.handleSearch();
+    }
+    localStorage.setItem('keyWord', movie);
+  }
+
+  function handleCheckboxChange(e) {
+    const input = e.target;
+    localStorage.setItem('checkbox', JSON.stringify(input.checked));
+    if (localStorage.getItem('keyWord')) {
+      props.handleSearch();
     }
   }
 
@@ -24,13 +33,26 @@ function SearchForm(props) {
     <section className='search'>
       <form className='search__form' onSubmit={handleSubmit}>
         <div className='search__search'>
-          <input className='search__input' placeholder='Фильм' onChange={handleChange}></input>
+          <input
+            className='search__input'
+            placeholder='Фильм'
+            defaultValue={localStorage.getItem('keyWord')}
+            onChange={handleChange}
+          ></input>
           <button className='search__button' type='submit'>Найти</button>
           <span className='search__error'>{isEmpty ? 'Нужно ввести ключевое слово' : ''}</span>
         </div>
         <label className='search__label'>
           Короткометражки
-          <input className='search__invisible' type='checkbox' name='short-films' id='short-films' value='short-films'></input>
+          <input
+            className='search__invisible'
+            type='checkbox'
+            name='short-films'
+            id='short-films'
+            value='short-films'
+            defaultChecked={JSON.parse(localStorage.getItem('checkbox'))}
+            onChange={handleCheckboxChange}
+          ></input>
           <span className='search__visible'></span>
         </label>
       </form>

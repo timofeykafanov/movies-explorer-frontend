@@ -39,9 +39,9 @@ function App() {
     setSavedFilteredMovies(JSON.parse(localStorage.getItem('savedMovies')) ? JSON.parse(localStorage.getItem('savedMovies')) : [])
   }, [])
 
-  function handleSearch(movie) {
+  function handleSearch() {
     setIsloading(true);
-    const key = new RegExp(movie, 'gi');
+    const key = new RegExp(localStorage.getItem('keyWord'), 'gi');
     mainApi.getMovies()
       .then((movies) => {
         setSavedMovies(movies);
@@ -54,7 +54,11 @@ function App() {
       .catch(err => console.log(err));
     moviesApi.getMovies()
       .then((movies) => {
-        const filteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        let moviesList = movies;
+        if (JSON.parse(localStorage.getItem('checkbox'))) {
+          moviesList = movies.filter((item) => item.duration < 41)
+        }
+        const filteredMovies = moviesList.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
         setMovies(filteredMovies);
         localStorage.setItem('movies', JSON.stringify(filteredMovies))
         if (filteredMovies.length === 0) {
@@ -68,12 +72,16 @@ function App() {
       .finally(() => setIsloading(false));
   }
 
-  function handleSavedMoviesSearch(movie) {
+  function handleSavedMoviesSearch() {
     setIsloading(true);
-    const key = new RegExp(movie, 'gi');
+    const key = new RegExp(localStorage.getItem('keyWord'), 'gi');
     mainApi.getMovies()
       .then((movies) => {
-        const filteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        let moviesList = movies;
+        if (JSON.parse(localStorage.getItem('checkbox'))) {
+          moviesList = movies.filter((item) => item.duration < 41)
+        }
+        const filteredMovies = moviesList.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
         setSavedFilteredMovies(filteredMovies);
         localStorage.setItem('savedMovies', JSON.stringify(filteredMovies))
         if (filteredMovies.length === 0) {
@@ -148,6 +156,9 @@ function App() {
         setLoggedIn(false);
         localStorage.removeItem('movies');
         localStorage.removeItem('savedMovies');
+        localStorage.removeItem('checkbox');
+        localStorage.removeItem('jwt');
+        localStorage.removeItem('keyWord');
         setMovies([]);
         setSavedFilteredMovies([]);
       })
@@ -158,6 +169,7 @@ function App() {
     console.log(email, name)
     mainApi.updateUserInfo(email, name)
       .then((user) => {
+        setMessage('');
         setCurrentUser(user);
         setIaEditState(false);
       })
