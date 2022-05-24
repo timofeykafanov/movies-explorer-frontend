@@ -32,6 +32,12 @@ function App() {
   const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [nothingFound, setNothingFound] = useState(false);
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    setMovies(JSON.parse(localStorage.getItem('movies')) ? JSON.parse(localStorage.getItem('movies')) : [])
+    setSavedFilteredMovies(JSON.parse(localStorage.getItem('savedMovies')) ? JSON.parse(localStorage.getItem('savedMovies')) : [])
+  }, [])
 
   function handleSearch(movie) {
     setIsloading(true);
@@ -50,8 +56,8 @@ function App() {
       .then((movies) => {
         const filteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
         setMovies(filteredMovies);
-        console.log(filteredMovies)
-        if (filteredMovies === []) {
+        localStorage.setItem('movies', JSON.stringify(filteredMovies))
+        if (filteredMovies.length === 0) {
           setNothingFound(true);
         } else {
           setNothingFound(false);
@@ -69,7 +75,8 @@ function App() {
       .then((movies) => {
         const filteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
         setSavedFilteredMovies(filteredMovies);
-        if (filteredMovies === []) {
+        localStorage.setItem('savedMovies', JSON.stringify(filteredMovies))
+        if (filteredMovies.length === 0) {
           setNothingFound(true);
         } else {
           setNothingFound(false);
@@ -103,21 +110,35 @@ function App() {
   function handleLogin(email, password) {
     auth.login(email, password)
       .then((user) => {
+        setMessage('');
         setLoggedIn(true)
         setCurrentUser(user);
         navigate('/movies');
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        if (err.includes(401)) {
+          setMessage("Неверный логин или пароль");
+        } else {
+          setMessage("При равторизации произошла ошибка");
+        }
+      })
   }
 
   function handleRegister(email, password, name) {
     auth.register(email, password, name)
       .then((user) => {
+        setMessage('');
         setLoggedIn(true)
         setCurrentUser(user);
         navigate('/movies');
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        if (err.includes(409)) {
+          setMessage("Пользователь с таким email уже существует");
+        } else {
+          setMessage("При регистрации пользователя произошла ошибка");
+        }
+      })
   }
 
   function handleLogout() {
@@ -125,6 +146,10 @@ function App() {
       .then(() => {
         setCurrentUser({});
         setLoggedIn(false);
+        localStorage.removeItem('movies');
+        localStorage.removeItem('savedMovies');
+        setMovies([]);
+        setSavedFilteredMovies([]);
       })
       .catch(err => console.log(err))
   }
@@ -136,11 +161,19 @@ function App() {
         setCurrentUser(user);
         setIaEditState(false);
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        if (err.includes(409)) {
+          setMessage("Пользователь с таким email уже существует");
+        } else {
+          setMessage("При обновлении профиля произошла ошибка");
+        }
+      })
   }
 
   useEffect(() => {
     setIaEditState(false);
+    setNothingFound(false);
+    setMessage('');
   }, [navigate])
 
   useEffect(() => {
@@ -149,7 +182,7 @@ function App() {
         setLoggedIn(true);
         setCurrentUser(user);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }, [])
 
   return (
@@ -192,14 +225,15 @@ function App() {
                 handleUpdateUserInfo={handleUpdateUserInfo}
                 handleEditClick={handleEditClick}
                 isEditState={isEditState}
-                />
+                message={message}
+              />
             </ProtectedRoute>
           } />
           <Route path="/signin" element={
-            <Login handleLogin={handleLogin} />
+            <Login handleLogin={handleLogin} message={message} />
           } />
           <Route path="/signup" element={
-            <Register handleRegister={handleRegister} />
+            <Register handleRegister={handleRegister} message={message} />
           } />
           <Route path='/error' element={
             <Error />

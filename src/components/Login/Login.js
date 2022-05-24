@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 
-function Login({ handleLogin }) {
+function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isValidEmail, setIsValidEmail] = useState(false);
@@ -34,7 +34,7 @@ function Login({ handleLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleLogin(email, password);
+    props.handleLogin(email, password);
   }
 
   return (
@@ -51,6 +51,7 @@ function Login({ handleLogin }) {
           <input className={`login__input ${!isValidPassword ? 'login__input_error' : ''}`} type='password' name='password'
             value={password} placeholder="Пароль" onChange={handlePasswordChange} required />
           <span className='login__error'>{passwordError}</span>
+          <span className='login__message'>{props.message}</span>
           <button className={`login__button ${!(isValidEmail && isValidPassword) ? 'login__button_disabled' : ''}`}
             type='submit' disabled={!(isValidEmail && isValidPassword)}>Войти</button>
           <p className='login__text'>

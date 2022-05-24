@@ -33,12 +33,13 @@ function Profile(props) {
         setNameError('');
       }
     }
-    if ((input.value === currentUser.name || name === currentUser.name) &&
-      (input.value === currentUser.email || name === currentUser.email)) {
+    if (input.value === currentUser.name ||
+      input.value === currentUser.email) {
       setIsSameValue(true);
     } else {
       setIsSameValue(false);
     }
+    console.log(isSameValue)
   }
 
   function handleSubmit(e) {
@@ -66,9 +67,10 @@ function Profile(props) {
               <p className='profile__value'>{currentUser.email}</p>}
               <span className='profile__error profile__error_type_email'>{emailError}</span>
           </div>
+          <span className='profile__message'>{props.message}</span>
           {props.isEditState ?
-            <button className={`profile__button ${(isSameValue || !(isValidName && !isValidEmail)) ? 'profile__button_disabled' : ''}`} type='submit' 
-              onClick={props.handleSaveClick} disabled={isSameValue || !(isValidName && !isValidEmail)}>Сохранить</button> :
+            <button className={`profile__button ${(isSameValue || (!isValidName || !isValidEmail)) ? 'profile__button_disabled' : ''}`} type='submit' 
+              onClick={props.handleSaveClick} disabled={isSameValue || (!isValidName || !isValidEmail)}>Сохранить</button> :
             <div className='profile__links'>
               <button className='profile__edit' type='button' onClick={props.handleEditClick}>Редактировать</button>
               <Link className='profile__logout' to='/' onClick={props.handleLogout}>Выйти из аккаунта</Link>

@@ -31,7 +31,8 @@ function MoviesCard(props) {
   function handleDeleteClick() {
     props.mainApi.deleteMovie(props.movie._id)
       .then(() => {
-        props.setSavedFilteredMovies(props.savedFilteredMovies.filter((item) => item._id !== props.movie._id))
+        props.setSavedFilteredMovies(props.savedFilteredMovies.filter((item) => item._id !== props.movie._id));
+        localStorage.setItem('savedMovies', JSON.stringify(props.savedFilteredMovies.filter((item) => item._id !== props.movie._id)))
       })
   }
 

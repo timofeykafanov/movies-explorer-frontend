@@ -85,7 +85,7 @@
   background: #4285F4;
   margin-bottom: 3px;
   font-weight: 500;
-  margin-top: 220px;
+  margin-top: 20px;
   font-size: 14px;
   line-height: 1.21;
   width: 100%;
@@ -145,6 +145,16 @@
   top: 32px;
 }
 
+.profile__message {
+  color: #FF004C;
+  font-size: 11px;
+  line-height: 1.18;
+  margin-top: 187px;
+  text-align: center;
+  height: 13px;
+  display: block;
+}
+
 .profile__input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 50px #202020 inset;
   -webkit-text-fill-color: white;
@@ -163,10 +173,6 @@
   .profile__title {
     margin-bottom: 96px;
   }
-
-  .profile__info {
-    margin-bottom: 210px;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -177,10 +183,6 @@
   .profile__title {
     margin-bottom: 80px;
     max-width: 310px;
-  }
-
-  .profile__info {
-    margin-bottom: 379px;
   }
   
   .profile__name {

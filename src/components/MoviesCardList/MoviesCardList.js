@@ -7,14 +7,12 @@ function MoviesCardList(props) {
   const [isEmpty, setIsEmpty] = useState(true);
 
   useEffect(() => {
-    if (props.movies === []) {
+    if (props.movies.length === 0) {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
     }
   }, [props.movies])
-
-  console.log(props.nothingFound)
 
   return (
     <>
@@ -38,7 +36,7 @@ function MoviesCardList(props) {
               })}
             </section>
           }
-          {props.nothingFound ? <p>Ничего не найдено</p> : ''}
+          {props.nothingFound ? <p className='movies-card-list__text'>Ничего не найдено</p> : ''}
         </>
       }
     </>

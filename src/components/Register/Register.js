@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css';
 
-function Register({ handleRegister }) {
+function Register(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -48,7 +48,7 @@ function Register({ handleRegister }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister(email, password, name);
+    props.handleRegister(email, password, name);
   }
 
   return (
@@ -69,6 +69,7 @@ function Register({ handleRegister }) {
           <input className={`register__input ${!isValidPassword ? 'register__input_error' : ''}`} type='password' name='password'
             value={password} placeholder="Пароль" onChange={handlePasswordChange} required />
           <span className='register__error'>{passwordError}</span>
+          <span className='register__message'>{props.message}</span>
           <button className={`register__button ${!(isValidEmail && isValidPassword && isValidName) ?
             'register__button_disabled' : ''}`} type='submit' disabled={!(isValidEmail && isValidPassword && isValidName)}>Зарегистрироваться</button>
           <p className='register__text'>
