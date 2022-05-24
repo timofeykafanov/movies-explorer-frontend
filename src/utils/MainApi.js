@@ -1,4 +1,4 @@
-const MAIN_URL = 'http://localhost:3001';
+const MAIN_URL = process.env.REACT_APP_MAIN_URL || 'http://localhost:3001';
 
 const HEADERS = {
   'Accept': 'application/json',
