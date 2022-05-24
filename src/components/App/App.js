@@ -28,23 +28,64 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [likedMovies, setLikedMovies] = useState([]);
+  const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
+  const [isLoading, setIsloading] = useState(false);
+  const [nothingFound, setNothingFound] = useState(false);
 
   function handleSearch(movie) {
-    const key = new RegExp(movie, 'gi');
-    moviesApi.getMovies()
-      .then((movies) => {
-        const fiteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
-        setMovies(fiteredMovies);
-      })
-  }
-
-  function handleSavedMoviesSearch(movie) {
+    setIsloading(true);
     const key = new RegExp(movie, 'gi');
     mainApi.getMovies()
       .then((movies) => {
-        const fiteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
-        setSavedMovies(fiteredMovies);
+        setSavedMovies(movies);
+        const array = [];
+        movies.forEach((movie) => {
+          array.push(movie.movieId)
+        })
+        setLikedMovies(array);
       })
+      .catch(err => console.log(err));
+    moviesApi.getMovies()
+      .then((movies) => {
+        const filteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        setMovies(filteredMovies);
+        console.log(filteredMovies)
+        if (filteredMovies === []) {
+          setNothingFound(true);
+        } else {
+          setNothingFound(false);
+        }
+        console.log(nothingFound)
+      })
+      .catch(err => console.log(err))
+      .finally(() => setIsloading(false));
+  }
+
+  function handleSavedMoviesSearch(movie) {
+    setIsloading(true);
+    const key = new RegExp(movie, 'gi');
+    mainApi.getMovies()
+      .then((movies) => {
+        const filteredMovies = movies.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        setSavedFilteredMovies(filteredMovies);
+        if (filteredMovies === []) {
+          setNothingFound(true);
+        } else {
+          setNothingFound(false);
+        }
+      })
+      .catch(err => console.log(err))
+      .finally(() => setIsloading(false));
+  }
+
+  function handleDeleteMovie(id) {
+    savedMovies.forEach((movie) => {
+      if (movie.movieId === id) {
+        mainApi.deleteMovie(movie._id)
+          .catch(err => console.log(err));
+      }
+    })
   }
 
   function handleEditClick() {
@@ -121,12 +162,28 @@ function App() {
           } />
           <Route path="/movies" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <Movies handleSearch={handleSearch} movies={movies} mainApi={mainApi} />
+              <Movies
+                handleSearch={handleSearch}
+                movies={movies} 
+                mainApi={mainApi}
+                likedMovies={likedMovies}
+                handleDelete={handleDeleteMovie}
+                isLoading={isLoading}
+                nothingFound={nothingFound}
+              />
             </ProtectedRoute>
           } />
           <Route path="/saved-movies" element={
             <ProtectedRoute loggedIn={loggedIn}>
-              <SavedMovies handleSearch={handleSavedMoviesSearch} movies={savedMovies} mainApi={mainApi} />
+              <SavedMovies
+                handleSearch={handleSavedMoviesSearch}
+                movies={savedFilteredMovies}
+                mainApi={mainApi}
+                setSavedFilteredMovies={setSavedFilteredMovies}
+                savedFilteredMovies={savedFilteredMovies}
+                isLoading={isLoading}
+                nothingFound={nothingFound}
+              />
             </ProtectedRoute>
           } />
           <Route path="/profile" element={

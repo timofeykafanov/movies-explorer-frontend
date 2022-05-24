@@ -14,7 +14,15 @@ function Movies(props) {
     <main className='movies'>
       <div className='movies__container'>
         <SearchForm handleSearch={props.handleSearch} />
-        <MoviesCardList movies={props.movies} counter={counter} mainApi={props.mainApi} />
+        <MoviesCardList
+          movies={props.movies}
+          counter={counter}
+          mainApi={props.mainApi}
+          likedMovies={props.likedMovies}
+          handleDelete={props.handleDelete}
+          isLoading={props.isLoading}
+          nothingFound={props.nothingFound}
+        />
         {counter >= props.movies.length ? <></> : 
           <button className='movies__button' type='button' onClick={handleClick}>Ещё</button>
         }
