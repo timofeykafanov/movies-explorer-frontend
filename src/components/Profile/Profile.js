@@ -28,12 +28,17 @@ function Profile(props) {
         setEmailError('');
       }
     } else if (input.name === "name") {
+      const validName = /^[a-zA-Zа-яЯ-Я- ]+$/.test(input.value);
+      setIsValidName(validName);
       setName(input.value);
-      setIsValidName(input.validity.valid);
-      if (!isValidName) {
-        setNameError(input.validationMessage)
+      if (input.value.length < 1) {
+        setNameError("Вы пропустили это поле");
+      } else if (input.value.length < 2) {
+        setNameError("Длина имени должна быть не менее 2 символов");
+      } else if (!isValidName) {
+        setNameError("Имя может содержать только буквы, пробел или дефис");
       } else {
-        setNameError('');
+        setNameError("");
       }
     }
     if (input.value === currentUser.name ||
