@@ -35,8 +35,9 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    setMovies(JSON.parse(localStorage.getItem('movies')) ? JSON.parse(localStorage.getItem('movies')) : [])
-    setSavedFilteredMovies(JSON.parse(localStorage.getItem('savedMovies')) ? JSON.parse(localStorage.getItem('savedMovies')) : [])
+    setMovies(JSON.parse(localStorage.getItem('movies')) ? JSON.parse(localStorage.getItem('movies')) : []);
+    setSavedFilteredMovies(JSON.parse(localStorage.getItem('savedMovies')) ? JSON.parse(localStorage.getItem('savedMovies')) : []);
+    setLikedMovies(JSON.parse(localStorage.getItem('likedMovies')) ? JSON.parse(localStorage.getItem('likedMovies')) : []);
   }, [])
 
   function handleSearch() {
@@ -49,6 +50,7 @@ function App() {
         movies.forEach((movie) => {
           array.push(movie.movieId)
         })
+        localStorage.setItem('likedMovies', JSON.stringify(array));
         setLikedMovies(array);
       })
       .catch(err => console.log(err));
@@ -66,7 +68,6 @@ function App() {
         } else {
           setNothingFound(false);
         }
-        console.log(nothingFound)
       })
       .catch(err => console.log(err))
       .finally(() => setIsloading(false));
@@ -74,11 +75,11 @@ function App() {
 
   function handleSavedMoviesSearch() {
     setIsloading(true);
-    const key = new RegExp(localStorage.getItem('keyWord'), 'gi');
+    const key = new RegExp(localStorage.getItem('keyWordSaved'), 'gi');
     mainApi.getMovies()
       .then((movies) => {
         let moviesList = movies;
-        if (JSON.parse(localStorage.getItem('checkbox'))) {
+        if (JSON.parse(localStorage.getItem('checkboxSaved'))) {
           moviesList = movies.filter((item) => item.duration < 41)
         }
         const filteredMovies = moviesList.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
@@ -157,8 +158,11 @@ function App() {
         localStorage.removeItem('movies');
         localStorage.removeItem('savedMovies');
         localStorage.removeItem('checkbox');
+        localStorage.removeItem('checkboxSaved');
         localStorage.removeItem('jwt');
         localStorage.removeItem('keyWord');
+        localStorage.removeItem('keyWordSaved');
+        localStorage.removeItem('likedMovies');
         setMovies([]);
         setSavedFilteredMovies([]);
       })
@@ -166,7 +170,6 @@ function App() {
   }
 
   function handleUpdateUserInfo(email, name) {
-    console.log(email, name)
     mainApi.updateUserInfo(email, name)
       .then((user) => {
         setMessage('');

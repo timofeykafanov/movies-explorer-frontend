@@ -17,7 +17,7 @@ function MoviesCard(props) {
         image: `https://api.nomoreparties.co/${props.movie.image.url}`,
         trailerLink: props.movie.trailerLink,
         nameRU: props.movie.nameRU,
-        nameEN: props.movie.nameEN,
+        nameEN: (props.movie.nameEN ? props.movie.nameEN : 'Empty'),
         thumbnail: `https://api.nomoreparties.co/${props.movie.image.formats.thumbnail.url}`,
         movieId: props.movie.id,
       });

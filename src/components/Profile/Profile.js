@@ -39,7 +39,6 @@ function Profile(props) {
     } else {
       setIsSameValue(false);
     }
-    console.log(isSameValue)
   }
 
   function handleSubmit(e) {
