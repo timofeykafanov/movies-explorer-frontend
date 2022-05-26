@@ -17,10 +17,13 @@ function Profile(props) {
   function handleChange(e) {
     const input = e.target;
     if (input.name === "email") {
+      const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{1,})$/i.test(
+        input.value
+      );
       setEmail(input.value);
-      setIsValidEmail(input.validity.valid);
+      setIsValidEmail(validEmail);
       if (!isValidEmail) {
-        setEmailError(input.validationMessage)
+        setEmailError('Неверный формат почты')
       } else {
         setEmailError('');
       }
