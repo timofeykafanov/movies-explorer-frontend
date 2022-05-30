@@ -18,6 +18,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
+import Popup from '../Popup/Popup';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -26,6 +27,7 @@ function App() {
   const location = useLocation();
   const [isEditState, setIaEditState] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isLoading, setIsloading] = useState(false);
   const [nothingFound, setNothingFound] = useState(false);
   const [message, setMessage] = useState('');
@@ -113,6 +115,14 @@ function App() {
     setIaEditState(true);
   }
 
+  function openPopup() {
+    setIsPopupOpen(true);
+  }
+
+  function closePopup() {
+    setIsPopupOpen(false);
+  }
+
   function openMenu() {
     setIsMenuOpen(true);
   }
@@ -172,6 +182,7 @@ function App() {
         setMessage('');
         setCurrentUser(user);
         setIaEditState(false);
+        openPopup(true);
       })
       .catch((err) => {
         if (err.includes(409)) {
@@ -252,6 +263,7 @@ function App() {
           } />
         </Routes>
         <Menu isOpen={isMenuOpen} closeMenu={closeMenu} />
+        <Popup isOpen={isPopupOpen} closePopup={closePopup} />
         {location.pathname === '/' ||
           location.pathname === '/movies' ||
           location.pathname === '/saved-movies' ?
