@@ -21,7 +21,7 @@ function Register(props) {
       setNameError("Вы пропустили это поле");
     } else if (input.value.length < 2) {
       setNameError("Длина имени должна быть не менее 2 символов");
-    } else if (!isValidName) {
+    } else if (!validName) {
       setNameError("Имя может содержать только буквы, пробел или дефис");
     } else {
       setNameError("");
@@ -36,7 +36,7 @@ function Register(props) {
     );
     setEmail(input.value);
     setIsValidEmail(validEmail);
-    if (!isValidEmail) {
+    if (!validEmail) {
       setEmailError('Неверный формат почты')
     } else {
       setEmailError('');

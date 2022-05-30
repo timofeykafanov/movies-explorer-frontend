@@ -12,12 +12,15 @@ function Login(props) {
 
   function handleEmailChange(e) {
     const input = e.target;
+    setEmail(input.value);
     const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{1,})$/i.test(
       input.value
     );
-    setEmail(input.value);
+    console.log(input.value)
+    console.log(email)
+    console.log(validEmail)
     setIsValidEmail(validEmail);
-    if (!isValidEmail) {
+    if (!validEmail) {
       setEmailError('Неверный формат почты')
     } else {
       setEmailError('');
