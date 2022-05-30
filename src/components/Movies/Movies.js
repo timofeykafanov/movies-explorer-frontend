@@ -18,7 +18,6 @@ function Movies(props) {
           movies={props.movies}
           counter={counter}
           mainApi={props.mainApi}
-          likedMovies={props.likedMovies}
           handleDelete={props.handleDelete}
           isLoading={props.isLoading}
           nothingFound={props.nothingFound}

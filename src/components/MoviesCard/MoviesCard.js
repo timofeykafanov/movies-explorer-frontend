@@ -4,12 +4,12 @@ import { useState } from 'react';
 
 function MoviesCard(props) {
   const location = useLocation();
-  const [isLiked, setIsLiked] = useState(location.pathname === '/movies' ? props.likedMovies.includes(props.movie.id) : false);
+  const [isLiked, setIsLiked] = useState(location.pathname === '/movies' ? JSON.parse(localStorage.getItem('likedMovies')).includes(props.movie.id) : false);
 
   function handleLikeClick() {
     if (!isLiked) {
       props.mainApi.addMovie({
-        country: props.movie.country,
+        country: (props.movie.country ? props.movie.country : 'Empty'),
         director: props.movie.director,
         duration: props.movie.duration,
         year: props.movie.year,
@@ -20,10 +20,19 @@ function MoviesCard(props) {
         nameEN: (props.movie.nameEN ? props.movie.nameEN : 'Empty'),
         thumbnail: `https://api.nomoreparties.co/${props.movie.image.formats.thumbnail.url}`,
         movieId: props.movie.id,
-      });
-      setIsLiked(true);
+      })
+        .then((movie) => {
+          const savedMovies = JSON.parse(localStorage.getItem('savedMovies'));
+          savedMovies.push(movie)
+          localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
+          const likedMovies = JSON.parse(localStorage.getItem('likedMovies'));
+          likedMovies.push(props.movie.id)
+          localStorage.setItem('likedMovies', JSON.stringify(likedMovies));
+          setIsLiked(true);
+        })
+        .catch(err => console.log(err));
     } else {
-      props.handleDelete(props.movie.id)
+      props.handleDelete(props.movie.id);
       setIsLiked(false);
     }
   }
@@ -31,8 +40,12 @@ function MoviesCard(props) {
   function handleDeleteClick() {
     props.mainApi.deleteMovie(props.movie._id)
       .then(() => {
-        props.setSavedFilteredMovies(props.savedFilteredMovies.filter((item) => item._id !== props.movie._id));
-        localStorage.setItem('savedMovies', JSON.stringify(props.savedFilteredMovies.filter((item) => item._id !== props.movie._id)))
+        const savedFilteredMovies = JSON.parse(localStorage.getItem('savedFilteredMovies'))
+          .filter((item) => item._id !== props.movie._id);
+        localStorage.setItem('savedFilteredMovies', JSON.stringify(savedFilteredMovies));
+        props.setSavedFilteredMovies(savedFilteredMovies)
+        const likedMovies = JSON.parse(localStorage.getItem('likedMovies')).filter((item) => !(item === props.movie.movieId));
+        localStorage.setItem('likedMovies', JSON.stringify(likedMovies));
       })
   }
 

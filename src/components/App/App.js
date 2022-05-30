@@ -26,18 +26,14 @@ function App() {
   const location = useLocation();
   const [isEditState, setIaEditState] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [movies, setMovies] = useState([]);
-  const [savedMovies, setSavedMovies] = useState([]);
-  const [likedMovies, setLikedMovies] = useState([]);
-  const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [nothingFound, setNothingFound] = useState(false);
   const [message, setMessage] = useState('');
+  const [savedFilteredMovies, setSavedFilteredMovies] = useState([]);
 
   useEffect(() => {
-    setMovies(JSON.parse(localStorage.getItem('movies')) ? JSON.parse(localStorage.getItem('movies')) : []);
-    setSavedFilteredMovies(JSON.parse(localStorage.getItem('savedMovies')) ? JSON.parse(localStorage.getItem('savedMovies')) : []);
-    setLikedMovies(JSON.parse(localStorage.getItem('likedMovies')) ? JSON.parse(localStorage.getItem('likedMovies')) : []);
+    setSavedFilteredMovies(JSON.parse(localStorage.getItem('savedFilteredMovies')) ?
+      JSON.parse(localStorage.getItem('savedFilteredMovies')) : [])
   }, [])
 
   function handleSearch() {
@@ -45,13 +41,12 @@ function App() {
     const key = new RegExp(localStorage.getItem('keyWord'), 'gi');
     mainApi.getMovies()
       .then((movies) => {
-        setSavedMovies(movies);
-        const array = [];
+        localStorage.setItem('savedMovies', JSON.stringify(movies));
+        const likedMovies = [];
         movies.forEach((movie) => {
-          array.push(movie.movieId)
+          likedMovies.push(movie.movieId)
         })
-        localStorage.setItem('likedMovies', JSON.stringify(array));
-        setLikedMovies(array);
+        localStorage.setItem('likedMovies', JSON.stringify(likedMovies));
       })
       .catch(err => console.log(err));
     moviesApi.getMovies()
@@ -59,9 +54,10 @@ function App() {
         let moviesList = movies;
         if (JSON.parse(localStorage.getItem('checkbox'))) {
           moviesList = movies.filter((item) => item.duration < 41)
+        } else {
+          moviesList = movies.filter((item) => item.duration > 40);
         }
         const filteredMovies = moviesList.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
-        setMovies(filteredMovies);
         localStorage.setItem('movies', JSON.stringify(filteredMovies))
         if (filteredMovies.length === 0) {
           setNothingFound(true);
@@ -80,11 +76,13 @@ function App() {
       .then((movies) => {
         let moviesList = movies;
         if (JSON.parse(localStorage.getItem('checkboxSaved'))) {
-          moviesList = movies.filter((item) => item.duration < 41)
+          moviesList = movies.filter((item) => item.duration <= 40);
+        } else {
+          moviesList = movies.filter((item) => item.duration > 40);
         }
         const filteredMovies = moviesList.filter((item) => key.test(item.nameRU) || key.test(item.nameEN));
+        localStorage.setItem('savedFilteredMovies', JSON.stringify(filteredMovies));
         setSavedFilteredMovies(filteredMovies);
-        localStorage.setItem('savedMovies', JSON.stringify(filteredMovies))
         if (filteredMovies.length === 0) {
           setNothingFound(true);
         } else {
@@ -96,9 +94,16 @@ function App() {
   }
 
   function handleDeleteMovie(id) {
-    savedMovies.forEach((movie) => {
+    JSON.parse(localStorage.getItem('savedMovies')).forEach((movie) => {
       if (movie.movieId === id) {
         mainApi.deleteMovie(movie._id)
+          .then(() => {
+            const likedMovies = JSON.parse(localStorage.getItem('likedMovies')).filter((item) => !(item === id))
+            localStorage.setItem('likedMovies', JSON.stringify(likedMovies));
+            const savedFilteredMovies = JSON.parse(localStorage.getItem('savedFilteredMovies')).filter((movie) => !(movie.movieId === id))
+            localStorage.setItem('savedFilteredMovies', JSON.stringify(savedFilteredMovies));
+            setSavedFilteredMovies(savedFilteredMovies);
+          })
           .catch(err => console.log(err));
       }
     })
@@ -155,15 +160,7 @@ function App() {
       .then(() => {
         setCurrentUser({});
         setLoggedIn(false);
-        localStorage.removeItem('movies');
-        localStorage.removeItem('savedMovies');
-        localStorage.removeItem('checkbox');
-        localStorage.removeItem('checkboxSaved');
-        localStorage.removeItem('jwt');
-        localStorage.removeItem('keyWord');
-        localStorage.removeItem('keyWordSaved');
-        localStorage.removeItem('likedMovies');
-        setMovies([]);
+        localStorage.clear();
         setSavedFilteredMovies([]);
       })
       .catch(err => console.log(err))
@@ -212,9 +209,9 @@ function App() {
             <ProtectedRoute loggedIn={loggedIn}>
               <Movies
                 handleSearch={handleSearch}
-                movies={movies} 
+                movies={JSON.parse(localStorage.getItem('movies')) ?
+                  JSON.parse(localStorage.getItem('movies')) : []} 
                 mainApi={mainApi}
-                likedMovies={likedMovies}
                 handleDelete={handleDeleteMovie}
                 isLoading={isLoading}
                 nothingFound={nothingFound}
@@ -226,9 +223,9 @@ function App() {
               <SavedMovies
                 handleSearch={handleSavedMoviesSearch}
                 movies={savedFilteredMovies}
-                mainApi={mainApi}
                 setSavedFilteredMovies={setSavedFilteredMovies}
-                savedFilteredMovies={savedFilteredMovies}
+                mainApi={mainApi}
+                handleDeleteMovie={handleDeleteMovie}
                 isLoading={isLoading}
                 nothingFound={nothingFound}
               />

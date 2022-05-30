@@ -5,7 +5,8 @@ import './SearchForm.css';
 function SearchForm(props) {
   const location = useLocation();
   const [isEmpty, setIsEmpty] = useState(false);
-  const [movie, setMovie] = useState(localStorage.getItem('keyWord') ? localStorage.getItem('keyWord') : '');
+  const [movie, setMovie] = useState(location.pathname === '/movies' && localStorage.getItem('keyWord') ? localStorage.getItem('keyWord') : '');
+  const [savedMovie, setSavedMovie] = useState(location.pathname === '/saved-movies' && localStorage.getItem('keyWordSaved') ? localStorage.getItem('keyWordSaved') : '');
   const defaultValue = location.pathname === '/movies' ?
     localStorage.getItem('keyWord') : localStorage.getItem('keyWordSaved');
   const defaultChecked = location.pathname === '/movies' ?
@@ -13,7 +14,11 @@ function SearchForm(props) {
 
   function handleChange(e) {
     const input = e.target;
-    setMovie(input.value);
+    if (location.pathname === '/movies') {
+      setMovie(input.value);
+    } else if (location.pathname === '/saved-movies') {
+      setSavedMovie(input.value);
+    }
   }
 
   function handleSubmit(e) {
@@ -21,13 +26,22 @@ function SearchForm(props) {
     if (location.pathname === '/movies') {
       localStorage.setItem('keyWord', movie);
     } else if (location.pathname === '/saved-movies') {
-      localStorage.setItem('keyWordSaved', movie);
+      localStorage.setItem('keyWordSaved', savedMovie);
     }
-    if (movie === '') {
-      setIsEmpty(true);
-    } else {
-      setIsEmpty(false);
-      props.handleSearch();
+    if (location.pathname === '/movies') {
+      if (movie === '') {
+        setIsEmpty(true);
+      } else {
+        setIsEmpty(false);
+        props.handleSearch();
+      }
+    } else if (location.pathname === '/saved-movies') {
+      if (savedMovie === '') {
+        setIsEmpty(true);
+      } else {
+        setIsEmpty(false);
+        props.handleSearch();
+      }
     }
   }
 

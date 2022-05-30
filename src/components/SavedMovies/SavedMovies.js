@@ -17,6 +17,7 @@ function SavedMovies(props) {
           savedFilteredMovies={props.savedFilteredMovies}
           isLoading={props.isLoading}
           nothingFound={props.nothingFound}
+          handleDeleteMovie={props.handleDeleteMovie}
         />
       </div>
     </main>

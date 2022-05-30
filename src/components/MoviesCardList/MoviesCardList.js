@@ -31,6 +31,7 @@ function MoviesCardList(props) {
                   key={movie.nameRU}
                   setSavedFilteredMovies={props.setSavedFilteredMovies}
                   savedFilteredMovies={props.savedFilteredMovies}
+                  handleDeleteMovie={props.handleDeleteMovie}
                 />
                 )
               })}
