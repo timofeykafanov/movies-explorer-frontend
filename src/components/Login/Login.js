@@ -13,7 +13,7 @@ function Login(props) {
   function handleEmailChange(e) {
     const input = e.target;
     setEmail(input.value);
-    const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{1,})$/i.test(
+    const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
       input.value
     );
     console.log(input.value)

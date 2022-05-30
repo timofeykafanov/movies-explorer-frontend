@@ -31,7 +31,7 @@ function Register(props) {
 
   function handleEmailChange(e) {
     const input = e.target;
-    const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{1,})$/i.test(
+    const validEmail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i.test(
       input.value
     );
     setEmail(input.value);
