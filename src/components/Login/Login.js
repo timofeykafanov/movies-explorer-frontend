@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './Login.css';
 
 function Login(props) {
@@ -41,6 +41,12 @@ function Login(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.handleLogin(email, password);
+  }
+
+  if (props.loggedIn) {
+    return (
+      <Navigate to='/' />
+    )
   }
 
   return (

@@ -21,7 +21,7 @@ import moviesApi from '../../utils/MoviesApi';
 import Popup from '../Popup/Popup';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
@@ -205,7 +205,10 @@ function App() {
         setLoggedIn(true);
         setCurrentUser(user);
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        setLoggedIn(false)
+        console.log(err);
+      })
   }, [])
 
   return (
@@ -253,12 +256,12 @@ function App() {
             </ProtectedRoute>
           } />
           <Route path="/signin" element={
-            <Login handleLogin={handleLogin} message={message} />
+            <Login handleLogin={handleLogin} message={message} loggedIn={loggedIn} />
           } />
           <Route path="/signup" element={
-            <Register handleRegister={handleRegister} message={message} />
+            <Register handleRegister={handleRegister} message={message} loggedIn={loggedIn} />
           } />
-          <Route path='/error' element={
+          <Route path='*' element={
             <Error />
           } />
         </Routes>

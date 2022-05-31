@@ -7,6 +7,7 @@ function MoviesCard(props) {
   const [isLiked, setIsLiked] = useState(location.pathname === '/movies' ? JSON.parse(localStorage.getItem('likedMovies')).includes(props.movie.id) : false);
 
   function handleLikeClick() {
+    console.log(location)
     if (!isLiked) {
       props.mainApi.addMovie({
         country: (props.movie.country ? props.movie.country : 'Empty'),
