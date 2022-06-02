@@ -16,10 +16,7 @@
   font-size: 24px;
   line-height: 1.21;
   margin: 0 0 123px;
-}
-
-.profile__info {
-  margin-bottom: 220px;
+  text-align: center;
 }
 
 .profile__name {
@@ -28,6 +25,7 @@
   width: 410px;
   border-bottom: 1px solid #424242;
   padding-bottom: 16px;
+  position: relative;
 }
 
 .profile__email {
@@ -35,6 +33,7 @@
   justify-content: space-between;
   width: 410px;
   padding-top: 17px;
+  position: relative;
 }
 
 .profile__key {
@@ -79,6 +78,93 @@
   opacity: 0.6;
 }
 
+.profile__button {
+  border: none;
+  color: white;
+  border-radius: 3px;
+  background: #4285F4;
+  margin-bottom: 3px;
+  font-weight: 500;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.21;
+  width: 100%;
+  height: 45px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.profile__button_disabled {
+  color: #C2C2C2;
+  background-color: #F8F8F8;
+  cursor: auto;
+}
+
+.profile__button:hover {
+  opacity: 0.6;
+}
+
+.profile__button_disabled:hover {
+  opacity: 1;
+}
+
+.profile__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile__input {
+  background-color: #202020;
+  border: none;
+  height: 13px;
+  padding: 0;
+  font-size: 11px;
+  line-height: 1.18;
+  color: white;
+  text-align: right;
+}
+
+.profile__input_error {
+  color: #EE3465;
+}
+
+.profile__error {
+  color: #EE3465;
+  font-size: 10px;
+  line-height: 1.2;
+  position: absolute;
+  max-width: 410px;
+  top: 15px;
+  right: 0;
+  text-align: right;
+}
+
+.profile__error_type_email {
+  top: 32px;
+}
+
+.profile__message {
+  color: #FF004C;
+  font-size: 11px;
+  line-height: 1.18;
+  margin-top: 187px;
+  text-align: center;
+  height: 13px;
+  display: block;
+}
+
+.profile__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 50px #202020 inset;
+  -webkit-text-fill-color: white;
+}
+
+.profile__input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #202020 inset;
+  -webkit-text-fill-color: white;
+} 
+
 @media screen and (max-width: 1279px) {
   .profile__container {
     padding: 236px 0 269px;
@@ -86,10 +172,6 @@
 
   .profile__title {
     margin-bottom: 96px;
-  }
-
-  .profile__info {
-    margin-bottom: 210px;
   }
 }
 
@@ -100,10 +182,7 @@
 
   .profile__title {
     margin-bottom: 80px;
-  }
-
-  .profile__info {
-    margin-bottom: 379px;
+    max-width: 310px;
   }
   
   .profile__name {

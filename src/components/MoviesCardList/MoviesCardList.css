@@ -4,6 +4,13 @@
   gap: 40px;
 }
 
+.movies-card-list__text {
+  text-align: center;
+  margin: 50px 0 62px;
+  font-size: 20px;
+  line-height: 1.38;
+}
+
 @media screen and (max-width: 767px) {
   .movies-card-list {
     padding-top: 40px;
