@@ -2,7 +2,7 @@
 
 Graduate project of Praktikum by Yandex. A multi-page adaptive website where the user can register and log in, search for movies, add/delete a movie, change profile data.
 
-Link to project: https://movie.diploma.nomoreparties.sbs/
+Link to the project: https://movie.diploma.nomoreparties.sbs/
 
 ## Stack
 * HTML
